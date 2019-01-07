@@ -1,0 +1,3 @@
+module WeddingsHelper
+
+end

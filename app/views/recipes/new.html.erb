@@ -1,0 +1,22 @@
+<h1>Create a new recipe for <%= @wedding.wedding_name %></h1>
+
+<%= form_with scope: :recipe, url: wedding_recipes_path, local: true do |form| %>
+  <p>
+    <%= form.label :recipe_name %>
+    <%= form.text_field :recipe_name %>
+  </p>
+
+  <p>
+    <%= form.label :recipe_ingredient %>
+    <%= form.select :recipe_ingredient, options_of_recipe_ingredients, :prompt => 'Select One' %>
+  </p>
+
+  <p>
+    <%= form.label :recipe_quantity %>
+    <%= form.text_field :recipe_quantity %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

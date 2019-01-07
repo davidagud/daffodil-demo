@@ -1,0 +1,6 @@
+<h1>Viewing All Flowers</h1>
+
+<% @masterflowers.each do |masterflower| %>
+  <h2>Flower Name: <%= masterflower.masterflower_name %></h2>
+  <h2>Flower Price: <%= masterflower.masterflower_price %></h2>
+<% end %>

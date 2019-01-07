@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wedding_name: MyString
+  wedding_date: MyString
+
+two:
+  wedding_name: MyString
+  wedding_date: MyString

@@ -1,0 +1,23 @@
+<p>
+  <h1>Wedding Name:</h1>
+  <h2><%= @wedding.wedding_name %></h2>
+</p>
+
+<p>
+  <h1>Wedding Date:</h1>
+  <h2><%= @wedding.wedding_date.to_s(:long_ordinal) %></h2>
+</p>
+
+<p>
+  <h1>Date Created:</h1>
+  <h2><%= @wedding.created_at.to_s(:long_ordinal) %></h2>
+</p>
+
+<p>
+  <h1>Recipes:</h1>
+  <ul>
+    <% @wedding.recipes.each do |recipe| %>
+        <li>Recipe ID: <%= recipe.id %>, Recipe Name: <%= recipe.recipe_name %>, Recipe Quantity: <%= recipe.recipe_quantity %></li>
+    <% end %>
+  </ul>
+</p>

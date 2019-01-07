@@ -1,0 +1,26 @@
+<h1>Edit <%= @wedding.wedding_name %></h1>
+
+<%= form_with scope: :wedding, url: weddings_path, local: true do |form| %>
+  <p>
+    <%= form.label :wedding_name %>
+    <%= form.text_field :wedding_name %>
+  </p>
+
+  <p>
+    <%= form.label :wedding_date %>
+    <%= form.date_select(:wedding_date, :order => [:month, :day, :year]) %>
+  </p>
+
+  <p>
+    Recipes
+    <%= link_to 'Create New Recipe', new_wedding_recipe_path(@wedding.id) %>
+  </p>
+
+  <p>
+    "Placeholder for 'Completed?'"
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

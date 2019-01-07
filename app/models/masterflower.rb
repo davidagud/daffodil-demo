@@ -1,0 +1,3 @@
+class Masterflower < ApplicationRecord
+
+end

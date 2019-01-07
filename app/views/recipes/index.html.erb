@@ -1,0 +1,7 @@
+<h1>Viewing All Recipes for <%= @wedding.wedding_name %></h1>
+
+<% @recipes.each do |recipe| %>
+  <h2>Recipe Name: <%= recipe.recipe_name %></h2>
+  <h2>Recipe Ingredients: <%= recipe.recipe_ingredient %></h2>
+  <h2>Recipe Quantity: <%= recipe.recipe_quantity %></h2>
+<% end %>
