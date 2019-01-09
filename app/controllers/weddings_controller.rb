@@ -8,7 +8,6 @@ class WeddingsController < ApplicationController
   end
 
   def new
-
   end
 
   def edit
@@ -18,11 +17,15 @@ class WeddingsController < ApplicationController
   def create
     @wedding = Wedding.new(wedding_params)
 
-    @wedding.save
-    redirect_to @wedding
+    @wedding.save!
+    redirect_to wedding_path(@wedding)
   end
 
   def update
+    @wedding = Wedding.find(params[:id])
+
+    @wedding.update(wedding_params)
+    redirect_to wedding_path(@wedding)
   end
 
   def destroy

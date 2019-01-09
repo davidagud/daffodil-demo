@@ -1,6 +1,6 @@
 <h1>Create a new recipe item for <%= @recipe.recipe_name %></h1>
 
-<%= form_with scope: :flower, url: wedding_recipe_flowers_path, local: true do |form| %>
+<%= form_with scope: :flower, url: wedding_recipe_flowers_path(@wedding, @recipe), local: true do |form| %>
   <p>
     <%= form.label :flower_name %>
     <%= form.select :flower_name, options_for_flowers, :prompt => 'Select One' %>

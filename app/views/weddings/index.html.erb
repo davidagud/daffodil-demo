@@ -1,6 +1,9 @@
 <h1>Viewing All Weddings</h1>
 
 <% @weddings.each do |wedding| %>
-  <h2>Wedding Name: <%= wedding.wedding_name %></h2>
+  <h2>Wedding Name: <%= link_to wedding.wedding_name, wedding_path(wedding) %></h2>
   <h2>Wedding Date: <%= wedding.wedding_date %></h2>
+  <%= link_to 'Delete' %>
 <% end %>
+
+<p><%= link_to 'Create New Wedding', new_wedding_path %></p>

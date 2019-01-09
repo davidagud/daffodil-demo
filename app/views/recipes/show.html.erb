@@ -12,3 +12,6 @@
   <h1>Recipe Quantity per <%= @wedding.wedding_name %>:</h1>
   <h2><%= @recipe.recipe_quantity %></h2>
 </p>
+
+<%= link_to 'Edit', edit_wedding_recipe_path(@wedding, @recipe) %>
+<%= link_to 'Delete' %>

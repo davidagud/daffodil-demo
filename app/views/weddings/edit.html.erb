@@ -1,6 +1,6 @@
 <h1>Edit <%= @wedding.wedding_name %></h1>
 
-<%= form_with scope: :wedding, url: weddings_path, local: true do |form| %>
+<%= form_with scope: :wedding, url: wedding_path(@wedding), local: true, method: :patch do |form| %>
   <p>
     <%= form.label :wedding_name %>
     <%= form.text_field :wedding_name %>
@@ -13,6 +13,9 @@
 
   <p>
     Recipes
+    <% @wedding.recipes.each do |recipe| %>
+      <%= recipe.recipe_name %> <%= recipe.id %>
+    <% end %>
     <%= link_to 'Create New Recipe', new_wedding_recipe_path(@wedding.id) %>
   </p>
 

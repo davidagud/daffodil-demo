@@ -1,6 +1,7 @@
 <h1>Edit <%= @wedding.wedding_name %>'s recipe for <%= @recipe.recipe_name %></h1>
 
-<%= form_with scope: :recipe, url: wedding_recipes_path, local: true do |form| %>
+<%= form_with scope: :recipe, url: wedding_recipe_path(@wedding, @recipe), local: true, method: :patch do |form| %>
+
   <p>
     <%= form.label :recipe_name %>
     <%= form.text_field :recipe_name %>
