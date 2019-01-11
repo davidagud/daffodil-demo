@@ -1,6 +1,6 @@
-<h1>Edit <%= @recipe.recipe_name %>'s ingredient <%= @flower.flower_name %></h1>
+<h1>Edit <%= @recipe.recipe_name %>'s ingredient <%= link_to @flower.flower_name, wedding_recipe_path(@wedding, @recipe) %></h1>
 
-<%= form_with scope: :flower, url: wedding_recipe_flowers_path(@wedding, @recipe, @flower), local: true do |form| %>
+<%= form_with scope: :flower, url: wedding_recipe_flower_path(@wedding, @recipe, @flower), local: true, method: :patch do |form| %>
   <p>
     <%= form.label :flower_name %>:
     <%= @flower.flower_name %>

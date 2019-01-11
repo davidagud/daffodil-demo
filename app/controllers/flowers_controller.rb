@@ -30,7 +30,7 @@ class FlowersController < ApplicationController
     @flower = @recipe.flowers.new(flower_params)
 
     @flower.save!
-    redirect_to wedding_recipe_flower_path(@wedding, @recipe, @flower)
+    redirect_to edit_wedding_recipe_path(@wedding, @recipe)
   end
 
   def update
@@ -39,7 +39,7 @@ class FlowersController < ApplicationController
     @flower = @recipe.flowers.find(params[:id])
 
     @flower.update(flower_params)
-    redirect_to wedding_recipe_flower_path(@wedding, @recipe, @flower)
+    redirect_to edit_wedding_recipe_path(@wedding, @recipe)
   end
 
   def destroy

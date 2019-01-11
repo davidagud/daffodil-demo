@@ -1,3 +1,5 @@
+<%= link_to 'View all recipes', wedding_recipes_path(@wedding) %>
+
 <p>
   <h1>Recipe Name:</h1>
   <h2><%= @recipe.recipe_name %></h2>
@@ -5,7 +7,9 @@
 
 <p>
   <h1>Recipe Ingredients:</h1>
-  <h2><%= @recipe.recipe_ingredient %></h2>
+  <% @recipe.flowers.each do |ingredient| %>
+  <h2><%= ingredient.flower_name %> <%= ingredient.quantity %></h2>
+  <% end %>
 </p>
 
 <p>

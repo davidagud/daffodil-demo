@@ -4,6 +4,6 @@
 </p>
 
 <p>
-  <h1>Flower Quantity per placeholder recipe:</h1>
+  <h1>Flower Quantity per <%= link_to @recipe.recipe_name, wedding_recipe_path(@wedding, @recipe) %>:</h1>
   <h2><%= @flower.quantity %></h2>
 </p>
