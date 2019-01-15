@@ -1,0 +1,43 @@
+<h3>Recipes:</h3>
+
+<% @recipes.each do |recipe| %>
+  <% @recipe = recipe %>
+
+  <a class="btn btn-success" role="button" data-toggle="collapse" href="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
+    <%= recipe.recipe_name %> x <%= recipe.recipe_quantity %>
+  </a>
+
+  <a class="btn btn-secondary" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-pencil-alt"></i>
+  </a>
+
+  <div class="collapse" id="collapseRecipeEdit<%= recipe.id %>">
+    <div class="well">
+      <%= render "recipes/recipes_edit" %>
+    </div>
+  </div>
+
+  <div class="collapse" id="collapseRecipe<%= recipe.id %>">
+    <div class="well" id="ingredients-well">
+      <p>
+        <h4 id="ingredients-title">Ingredients:</h4>
+          <% @flowers = recipe.flowers %>
+          <%= render "flowers/flowers" %>
+      </p>
+
+    </div>
+  </div>
+
+</br>
+
+<% end %>
+
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseRecipeNew<%= @wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
+  New Recipe
+</a>
+
+<div class="collapse" id="collapseRecipeNew<%= @wedding.id %>">
+  <div class="well">
+    <%= render "recipes/recipes_new" %>
+  </div>
+</div>

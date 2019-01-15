@@ -1,0 +1,26 @@
+<% @flowers.each do |flower| %>
+
+<div class="row ingredient-row">
+  <h4><%= flower.quantity %>&nbsp<a role="button" data-toggle="collapse" href="#collapseFlowerEdit<%= flower.id %>" aria-expanded="false" aria-controls="collapseExample"><%= flower.flower_name %></a></h4>
+
+  <% @flower = flower %>
+
+</div>
+
+  <div class="collapse" id="collapseFlowerEdit<%= flower.id %>">
+    <div class="well">
+      <%= render "flowers/flowers_edit" %>
+    </div>
+  </div>
+  </br>
+<% end %>
+
+<a role="button" data-toggle="collapse" href="#collapseFlowerNew<%= @recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
+  <h4  id="new-ingredient-button">New Ingredient</h4>
+</a>
+
+<div class="collapse" id="collapseFlowerNew<%= @recipe.id %>">
+  <div class="well">
+    <%= render "flowers/flowers_new" %>
+  </div>
+</div>

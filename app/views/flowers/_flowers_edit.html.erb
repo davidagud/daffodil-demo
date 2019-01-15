@@ -1,0 +1,13 @@
+<%= form_with scope: :flower, url: wedding_recipe_flower_path(@wedding, @recipe, @flower), local: true, method: :patch do |form| %>
+  <p>
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+    <button role="button" href="<% link_to 'delete' %>">
+        <i class="fas fa-trash"></i>
+    </button>
+  </p>
+<% end %>

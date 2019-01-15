@@ -1,5 +1,3 @@
-<h2>Edit <%= @wedding.wedding_name %></h2>
-
 <%= form_with scope: :wedding, url: wedding_path(@wedding), local: true, method: :patch do |form| %>
   <p>
     <%= form.label :wedding_name %>
@@ -12,18 +10,13 @@
   </p>
 
   <p>
-    Recipes
-    <% @wedding.recipes.each do |recipe| %>
-      <%= recipe.recipe_name %> <%= recipe.id %>
-    <% end %>
-    <%= link_to 'Create New Recipe', new_wedding_recipe_path(@wedding.id) %>
-  </p>
-
-  <p>
     "Placeholder for 'Completed?'"
   </p>
 
   <p>
     <%= form.submit %>
+    <button role="button" href="<% link_to 'delete' %>">
+        <i class="fas fa-trash"></i>
+    </button>
   </p>
 <% end %>

@@ -1,3 +1,55 @@
 // Place all the styles related to the Weddings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wedding-card {
+  margin-bottom: 20px;
+  border: 2px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+.col-4 {
+  max-width: 30%;
+}
+
+.row {
+  margin-left: 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-bottom: 5px;
+}
+
+.ingredient-row {
+  margin-top: -20px;
+}
+
+#ingredients-title {
+  margin-bottom: 30px;
+}
+
+#new-ingredient-button {
+  margin-top: -20px;
+}
+
+#submit-button {
+  margin-bottom: -20px;
+}
+
+#ingredients-well {
+  margin-bottom: -30px;
+  margin-top: -15px;
+}
+
+.well {
+  padding-left: 20px;
+}

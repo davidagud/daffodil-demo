@@ -1,41 +1,19 @@
-<h2>Viewing All Weddings</h2>
+<h1 class="title">Viewing All Weddings</h1>
 
-<% @weddings.each do |wedding| %>
+<div class="container">
+  <div class="row wedding-row">
+    <% @weddings.each do |wedding| %>
+      <div class="col-4 wedding-card">
+        <h2><%= link_to wedding.wedding_name, wedding_path(wedding) %></h2>
+        <h3><%= wedding.wedding_date.to_s(:long_ordinal) %></h3>
 
-  <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseWedding<%= wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
-    <%= wedding.wedding_name %>
-  </a>
-
-  <div class="collapse" id="collapseWedding<%= wedding.id %>">
-    <div class="well">
-
-      <h3>Wedding Name: <%= link_to wedding.wedding_name, wedding_path(wedding) %></h3>
-      <h3>Wedding Date: <%= wedding.wedding_date %></h3>
-
-      <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseWeddingEdit<%= wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
-        Edit Wedding
-      </a>
-
-      <% @wedding = wedding %>
-
-      <div class="collapse" id="collapseWeddingEdit<%= wedding.id %>">
-        <div class="well">
-          <%= render "edit" %>
-        </div>
+        <%= link_to 'Delete Wedding' %>
       </div>
+    <% end %>
+  </div>
+</div>
 
-      <% @recipes = wedding.recipes %>
-      <%= render "recipes" %>
-
-      <%= link_to 'Delete Wedding' %>
-    </div>
-  </div></br>
-<% end %>
-
-<p><%= link_to 'Create New Wedding', new_wedding_path %></p>
-
-
-<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
+<a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
   Create New Wedding
 </a>
 
