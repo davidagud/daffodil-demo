@@ -10,13 +10,16 @@
   </p>
 
   <p>
-    "Placeholder for 'Completed?'"
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
   </p>
 
   <p>
     <%= form.submit %>
-    <button role="button" href="<% link_to 'delete' %>">
+    <%= link_to wedding_path(@wedding), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <button role="button" href="">
         <i class="fas fa-trash"></i>
-    </button>
+      </button>
+    <% end %>
   </p>
 <% end %>

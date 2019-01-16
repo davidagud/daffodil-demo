@@ -1,43 +1,52 @@
 <h3>Recipes:</h3>
 
-<% @recipes.each do |recipe| %>
-  <% @recipe = recipe %>
+<div class="accordion" id="recipes">
 
-  <a class="btn btn-success" role="button" data-toggle="collapse" href="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
-    <%= recipe.recipe_name %> x <%= recipe.recipe_quantity %>
-  </a>
+  <div class="card">
+    <div class="card-header" id="headingNewRecipe">
+      <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewRecipe" aria-expanded="false" aria-controls="collapseNewRecipe">
+        <h4>New Recipe</h4>
+      </button>
+    </div>
 
-  <a class="btn btn-secondary" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-pencil-alt"></i>
-  </a>
-
-  <div class="collapse" id="collapseRecipeEdit<%= recipe.id %>">
-    <div class="well">
-      <%= render "recipes/recipes_edit" %>
+    <div class="collapse" id="collapseNewRecipe" aria-labelledby="NewRecipe" data-parent="#recipes">
+      <div class="card-body">
+        <%= render "recipes/recipes_new" %>
+      </div>
     </div>
   </div>
 
-  <div class="collapse" id="collapseRecipe<%= recipe.id %>">
-    <div class="well" id="ingredients-well">
-      <p>
-        <h4 id="ingredients-title">Ingredients:</h4>
-          <% @flowers = recipe.flowers %>
-          <%= render "flowers/flowers" %>
-      </p>
+  <% @recipes.each do |recipe| %>
+    <% @recipe = recipe %>
+
+    <div class="card">
+      <div class="card-header" id="<%= recipe.recipe_name %>Header">
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
+          <h4><%= recipe.recipe_name %> x <%= recipe.recipe_quantity %></h4>
+        </button>
+
+        <a class="btn btn-secondary" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
+          <i class="fas fa-pencil-alt"></i>
+        </a>
+      </div>
+
+      <div class="collapse" id="collapseRecipeEdit<%= recipe.id %>" aria-labelledby="EditRecipe<%= recipe.recipe_name %>" data-parent="#recipes">
+        <div class="card-body">
+          <%= render "recipes/recipes_edit" %>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseRecipe<%= recipe.id %>" aria-labelledby="Recipe<%= recipe.recipe_name %>" data-parent="#recipes">
+        <div class="card-body">
+          <p>
+            <% @flowers = recipe.flowers %>
+            <%= render "flowers/flowers" %>
+          </p>
+        </div>
+      </div>
 
     </div>
-  </div>
 
-</br>
+  <% end %>
 
-<% end %>
-
-<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseRecipeNew<%= @wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
-  New Recipe
-</a>
-
-<div class="collapse" id="collapseRecipeNew<%= @wedding.id %>">
-  <div class="well">
-    <%= render "recipes/recipes_new" %>
-  </div>
-</div>
+</div><!--End Accordion-->

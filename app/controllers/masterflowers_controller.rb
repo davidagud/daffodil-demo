@@ -11,6 +11,7 @@ class MasterflowersController < ApplicationController
   end
 
   def edit
+    @masterflower = Masterflower.find(params[:id])
   end
 
   def create
@@ -21,9 +22,17 @@ class MasterflowersController < ApplicationController
   end
 
   def update
+    @masterflower = Masterflower.find(params[:id])
+
+    @masterflower.update(masterflower_params)
+    redirect_to masterflowers_path
   end
 
   def destroy
+    @masterflower = Masterflower.find(params[:id])
+
+    @masterflower.destroy
+    redirect_to masterflowers_path
   end
 
   private

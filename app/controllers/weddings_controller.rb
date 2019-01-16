@@ -29,11 +29,15 @@ class WeddingsController < ApplicationController
   end
 
   def destroy
+    @wedding = Wedding.find(params[:id])
+
+    @wedding.destroy
+    redirect_to weddings_path
   end
 
   private
     def wedding_params
-      params.require(:wedding).permit(:wedding_name, :wedding_date)
+      params.require(:wedding).permit(:wedding_name, :wedding_date, :completed)
     end
 
 end

@@ -1,5 +1,17 @@
 <h1 class="title">Viewing All Weddings</h1>
 
+<div class="text-center">
+  <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
+    Create New Wedding
+  </a>
+</div>
+
+<div class="collapse text-center" id="collapseNew">
+  <div class="well">
+    <%= render "new" %>
+  </div>
+</div>
+
 <div class="container">
   <div class="row wedding-row">
     <% @weddings.each do |wedding| %>
@@ -7,18 +19,9 @@
         <h2><%= link_to wedding.wedding_name, wedding_path(wedding) %></h2>
         <h3><%= wedding.wedding_date.to_s(:long_ordinal) %></h3>
 
-        <%= link_to 'Delete Wedding' %>
+        <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' } %>
+
       </div>
     <% end %>
-  </div>
-</div>
-
-<a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
-  Create New Wedding
-</a>
-
-<div class="collapse" id="collapseNew">
-  <div class="well">
-    <%= render "new" %>
   </div>
 </div>

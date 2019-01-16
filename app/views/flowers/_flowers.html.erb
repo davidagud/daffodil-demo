@@ -1,26 +1,39 @@
-<% @flowers.each do |flower| %>
+<div class="accordion" id="ingredients">
 
-<div class="row ingredient-row">
-  <h4><%= flower.quantity %>&nbsp<a role="button" data-toggle="collapse" href="#collapseFlowerEdit<%= flower.id %>" aria-expanded="false" aria-controls="collapseExample"><%= flower.flower_name %></a></h4>
+  <div class="card">
+    <div class="card-header" id="headingNewIngredient">
+      <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewIngredient" aria-expanded="false" aria-controls="collapseNewIngredient">
+        <h5>New Ingredient</h5>
+      </button>
+    </div>
 
-  <% @flower = flower %>
-
-</div>
-
-  <div class="collapse" id="collapseFlowerEdit<%= flower.id %>">
-    <div class="well">
-      <%= render "flowers/flowers_edit" %>
+    <div class="collapse" id="collapseNewIngredient" aria-labelledby="NewIngredient" data-parent="#ingredients">
+      <div class="card-body">
+        <%= render "flowers/flowers_new" %>
+      </div>
     </div>
   </div>
-  </br>
-<% end %>
 
-<a role="button" data-toggle="collapse" href="#collapseFlowerNew<%= @recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
-  <h4  id="new-ingredient-button">New Ingredient</h4>
-</a>
 
-<div class="collapse" id="collapseFlowerNew<%= @recipe.id %>">
-  <div class="well">
-    <%= render "flowers/flowers_new" %>
-  </div>
-</div>
+  <% @flowers.each do |flower| %>
+    <% @flower = flower %>
+
+    <div class="card">
+      <div class="card-header" id="<%= flower.flower_name %>Header">
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
+          <h5><%= flower.quantity %> x <%= flower.flower_name %></h5>
+        </button>
+      </div>
+
+      <div class="collapse" id="collapseIngredient<%= flower.id %>" aria-labelledby="Ingredient<%= flower.flower_name %>" data-parent="#ingredients">
+        <div class="card-body">
+          <p>
+            <%= render "flowers/flowers_edit" %>
+          </p>
+        </div>
+      </div>
+    </div><!--Ingredient End Card-->
+
+  <% end %>
+
+</div><!--End accordion-->

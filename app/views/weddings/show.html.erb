@@ -11,6 +11,10 @@
       <%= @wedding.wedding_date.to_s(:long_ordinal) %>
     </h3>
 
+    <h3>
+      Completed: <% if @wedding.completed === true %> Yes <% else %> No <% end %>
+    </h3>
+
     <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
       <div class="well">
         <%= render "edit" %>

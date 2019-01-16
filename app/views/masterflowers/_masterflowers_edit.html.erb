@@ -1,0 +1,21 @@
+<%= form_with scope: :masterflower, url: masterflower_path(@masterflower), local: true, method: :patch do |form| %>
+
+  <p>
+    <%= form.label :masterflower_name %>
+    <%= form.text_field :masterflower_name %>
+  </p>
+
+  <p>
+    <%= form.label :masterflower_price %>
+    <%= form.text_field :masterflower_price %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+    <%= link_to masterflower_path(@masterflower), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <button role="button" href="">
+        <i class="fas fa-trash"></i>
+      </button>
+    <% end %>
+  </p>
+<% end %>

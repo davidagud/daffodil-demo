@@ -12,8 +12,10 @@
 
   <p>
     <%= form.submit %>
-    <button role="button" href="<% link_to 'delete' %>">
+    <%= link_to wedding_recipe_path(@wedding, @recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <button role="button" href="">
         <i class="fas fa-trash"></i>
-    </button>
+      </button>
+    <% end %>
   </p>
 <% end %>
