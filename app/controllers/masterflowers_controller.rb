@@ -18,7 +18,7 @@ class MasterflowersController < ApplicationController
     @masterflower = Masterflower.new(masterflower_params)
 
     @masterflower.save
-    redirect_to @masterflower
+    redirect_to masterflowers_path
   end
 
   def update

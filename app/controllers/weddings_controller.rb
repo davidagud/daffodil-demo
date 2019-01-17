@@ -1,4 +1,5 @@
 class WeddingsController < ApplicationController
+
   def index
     @weddings = Wedding.all
 
@@ -48,5 +49,5 @@ class WeddingsController < ApplicationController
     def wedding_params
       params.require(:wedding).permit(:wedding_name, :wedding_date, :completed)
     end
-
+    
 end
