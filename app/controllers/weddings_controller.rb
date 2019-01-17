@@ -1,6 +1,15 @@
 class WeddingsController < ApplicationController
   def index
     @weddings = Wedding.all
+
+    if params[:q]
+      search_term = params[:q]
+        @weddings = Wedding.search(search_term)
+      if @weddings.nil?
+        flash.now[:info] = "Sorry, no weddings match #{search_term}"
+        @weddings = Wedding.all
+      end
+    end
   end
 
   def show
