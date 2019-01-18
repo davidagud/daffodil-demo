@@ -10,15 +10,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
-  <%= link_to 'Weddings', weddings_path %>
-  <%= link_to 'Flowers', masterflowers_path %>
+  <div class="row">
 
-  <%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
-          <%= form.text_field :q, id: 'q', value: params[:q], onfocus: "if (this.value=='Search') this.value = ''", onblur: "if (this.value=='') this.value = 'Search'", placeholder: "Search" %>
-          <%= form.submit 'Find' %>
-  <% end %>
+    <%= link_to 'Weddings', weddings_path %>
+    <%= link_to 'Flowers', masterflowers_path %>
+
+  </div>
 
   <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

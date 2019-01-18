@@ -2,6 +2,12 @@
 
   <h1 class="title">Viewing All Flowers</h1>
 
+  <%= form_with(url: masterflowers_path, method: 'get', local: true) do |form| %>
+          <%= form.text_field :r, id: 'r', value: params[:r], placeholder: "Search" %>
+    Sort: <%= form.select :t, options_for_sort_masterflowers %>
+          <%= form.submit 'Find' %>
+  <% end %>
+
   <div class="accordion" id="flowers">
 
     <div class="card">

@@ -3,11 +3,13 @@ class WeddingsController < ApplicationController
   def index
     @weddings = Wedding.all
 
-    if params[:q]
+    if params[:v] && params[:q] && params[:h]
+      status = params[:v]
       search_term = params[:q]
-        @weddings = Wedding.search(search_term)
-      if @weddings.nil?
-        flash.now[:info] = "Sorry, no weddings match #{search_term}"
+      sort = params[:h]
+        @weddings = Wedding.search(search_term).filter(status).order(sort)
+      if @weddings.blank?
+        flash.now[:info] = "Sorry, no weddings match your search"
         @weddings = Wedding.all
       end
     end
@@ -49,5 +51,5 @@ class WeddingsController < ApplicationController
     def wedding_params
       params.require(:wedding).permit(:wedding_name, :wedding_date, :completed)
     end
-    
+
 end
