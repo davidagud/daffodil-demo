@@ -1,0 +1,16 @@
+<div class="well">
+
+  <div class="row">
+    <div class="col-xs-8">
+      <h4><%= wedding.wedding_name %></h4>
+    </div>
+
+    <div class="col-xs-4">
+      <%= form_for order_item, remote: true do |f| %>
+        <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete wedding '#{order_item.wedding.wedding_name}' from your cart?"}, method: :delete, remote: true, class: "btn btn-danger" } %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

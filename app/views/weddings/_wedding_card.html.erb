@@ -1,0 +1,16 @@
+<div class="col-4 wedding-card">
+  <h2><%= link_to wedding.wedding_name, wedding_path(wedding) %></h2>
+  <h3><%= wedding.wedding_date.to_s(:long_ordinal) %></h3>
+
+  <%= form_for order_item, remote: true do |f| %>
+    <div class="input-group">
+      <div class="input-group-btn">
+        <%= f.hidden_field :wedding_id, value: wedding.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+</div>

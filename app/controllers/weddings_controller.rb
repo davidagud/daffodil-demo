@@ -13,6 +13,9 @@ class WeddingsController < ApplicationController
         @weddings = Wedding.all
       end
     end
+
+    @order_item = current_order.order_items.new
+
   end
 
   def show

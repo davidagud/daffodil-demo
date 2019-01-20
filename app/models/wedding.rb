@@ -1,4 +1,5 @@
 class Wedding < ApplicationRecord
+  belongs_to :order
   has_many :recipes, :dependent => :destroy
   has_many :flowers, through: :recipes, :dependent => :destroy
 

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+  get 'order_items/update'
+  get 'order_items/destroy'
+  get 'carts/show'
   get 'list/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,7 +11,10 @@ Rails.application.routes.draw do
       resources :flowers
     end
   end
-  resources :masterflowers
 
-  root 'list#index'
+  resources :masterflowers
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+
+  root 'weddings#index'
 end

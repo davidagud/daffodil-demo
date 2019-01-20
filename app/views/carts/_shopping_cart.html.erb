@@ -1,0 +1,29 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some weddings to your cart.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
+  <% end %>
+  Flowers
+  <p>
+    <% @order.each do |order| %>
+      <% order.flowers.each do |flower| %>
+        <%= flower.flower_name %>
+        <%= flower.quantity %>
+        <%= flower.recipe.wedding.wedding_name %>
+        </br>
+      <% end %>
+    <% end %>
+  </p>
+<% end %>

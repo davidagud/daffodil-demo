@@ -23,13 +23,7 @@
 
   <div class="row wedding-row">
     <% @weddings.each do |wedding| %>
-      <div class="col-4 wedding-card">
-        <h2><%= link_to wedding.wedding_name, wedding_path(wedding) %></h2>
-        <h3><%= wedding.wedding_date.to_s(:long_ordinal) %></h3>
-
-        <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-      </div>
+      <%= render "wedding_card", wedding: wedding, order_item: @order_item %>
     <% end %>
   </div>
 </div>
