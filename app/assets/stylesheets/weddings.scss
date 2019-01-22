@@ -3,25 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .wedding-card {
-  margin-bottom: 20px;
-  border: 2px solid black;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  margin-bottom: 3%;
+  border: 2px solid #E7CAC3;
+  padding: 20px;
   box-sizing: border-box;
   margin-left: 1.5%;
   margin-right: 1.5%;
+  background-color: #E7CAC3;
+  color: #545250;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .col-4 {
   max-width: 30%;
 }
 
-.row {
+.container .wedding-row {
   margin-left: 0;
+}
+
+.wedding-name a {
+  color: #545250;
 }
 
 .title {
   text-align: center;
+  color: #545250;
+  font-family: monospace;
+  font-weight: 500;
+  font-size: 4em;
+  margin-bottom: 0px;
 }
 
 .accordion {
@@ -32,6 +44,46 @@
   float: right;
 }
 
+.wedding-name {
+  margin-bottom: 0px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.wedding-date {
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+
+.button-row {
+  margin-left: 1.5%!important;
+  margin-right: 1.5%!important;
+  margin-bottom: 1%;
+}
+
+.row {
+  margin-left: 0px;
+}
+
+.wedding-row {
+  margin-top: 30px;
+}
+
+#add-to-cart-button {
+  margin-right: 20px;
+}
+
 #ingredients {
   width: 675px;
+}
+
+#create-wedding-button {
+  font-family: monospace;
+  font-size: 1em;
+  color: #545250;
+}
+
+#create-wedding-button-container {
+  margin-bottom: 10px;
 }

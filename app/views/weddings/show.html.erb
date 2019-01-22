@@ -1,28 +1,31 @@
 <div class="container" id="wedding-frame">
+  <div class="row">
+    <div class="col-sm-4"
+      <h2>
+        <a id="wedding-name" role="button" data-toggle="collapse" href="#collapseWeddingEdit<%= @wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
+          <%= @wedding.wedding_name %>
+        </a>
+      </h2>
 
-  <div>
-    <h2>
-      <a role="button" data-toggle="collapse" href="#collapseWeddingEdit<%= @wedding.id %>" aria-expanded="false" aria-controls="collapseExample">
-        <%= @wedding.wedding_name %>
-      </a>
-    </h2>
+      <h3 id="wedding-date">
+        <%= @wedding.wedding_date.to_s(:long_ordinal) %>
+      </h3>
 
-    <h3>
-      <%= @wedding.wedding_date.to_s(:long_ordinal) %>
-    </h3>
+      <h3 id="completed">
+        Completed: <% if @wedding.completed === true %> Yes <% else %> No <% end %>
+      </h3>
 
-    <h3>
-      Completed: <% if @wedding.completed === true %> Yes <% else %> No <% end %>
-    </h3>
-
-    <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
-      <div class="well">
-        <%= render "edit" %>
+      <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
+        <div class="well">
+          <%= render "edit" %>
+        </div>
       </div>
     </div>
 
-    <% @recipes = @wedding.recipes %>
-    <%= render "recipes/recipes" %>
-  </div>
+    <div class="col-sm-8">
+      <% @recipes = @wedding.recipes %>
+      <%= render "recipes/recipes" %>
+    </div>
 
+  </div>
 </div>

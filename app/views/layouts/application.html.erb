@@ -10,14 +10,42 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
-  <div class="row">
-
-    <%= link_to 'Weddings', weddings_path %>
-    <%= link_to 'Flowers', masterflowers_path %>
-
-    <h5 class="cart-text"><%= render 'layouts/cart_text' %></h5>
-
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <%= link_to 'daffodil*parker', weddings_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'WEDDINGS', weddings_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'FLOWERS', masterflowers_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{current_order.order_items.size} WEDDINGS IN CART", cart_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item form-inline ml-auto">
+          <%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
+          <%= form.text_field :q, id: 'q', value: params[:q], placeholder: "search", class: 'form-control' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            filter
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item"> Completed: <%= form.select :v, options_for_completed %></a>
+            <a class="dropdown-item"> Sort: <%= form.select :h, options_for_sort %></a>
+          </div>
+        </li>
+        <li class="nav-item form-inline">
+          <%= form.submit 'find', class: 'btn btn-secondary' %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 
   <body>
     <% flash.each do |key, value| %>

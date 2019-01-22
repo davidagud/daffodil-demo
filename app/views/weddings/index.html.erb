@@ -1,14 +1,7 @@
-<h1 class="title">Viewing All Weddings</h1>
+<h1 class="title">ALL WEDDINGS</h1>
 
-<%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
-             <%= form.text_field :q, id: 'q', value: params[:q], placeholder: "Search" %>
-  Completed: <%= form.select :v, options_for_completed %>
-  Sort: <%= form.select :h, options_for_sort %>
-             <%= form.submit 'Find' %>
-<% end %>
-
-<div class="text-center">
-  <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
+<div class="text-center" id="create-wedding-button-container">
+  <a id="create-wedding-button" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
     Create New Wedding
   </a>
 </div>
@@ -20,7 +13,6 @@
 </div>
 
 <div class="container">
-
   <div class="row wedding-row">
     <% @weddings.each do |wedding| %>
       <%= render "wedding_card", wedding: wedding, order_item: @order_item %>

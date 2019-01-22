@@ -1,16 +1,16 @@
 <%= form_with scope: :wedding, url: wedding_path(@wedding), local: true, method: :patch do |form| %>
-  <p>
-    <%= form.label :wedding_name %>
+  <p id="edit-form">
+    <%= form.label :wedding_name %>:
     <%= form.text_field :wedding_name %>
   </p>
 
-  <p>
-    <%= form.label :wedding_date %>
+  <p id="edit-form">
+    <%= form.label :wedding_date %>:
     <%= form.date_select(:wedding_date, :order => [:month, :day, :year]) %>
   </p>
 
-  <p>
-    <%= form.label :completed %>
+  <p id="edit-form">
+    <%= form.label :completed %>:
     <%= form.check_box :completed %>
   </p>
 

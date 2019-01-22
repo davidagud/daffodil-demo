@@ -15,3 +15,30 @@
 @import 'bootstrap';
 @import 'weddings';
 @import 'masterflowers';
+@import 'recipes';
+
+.navbar-nav {
+  width: 100%;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white!important;
+}
+
+.navbar-brand {
+  font-family: monospace;
+  transform: scaleY(1.25);
+  color: black!important;
+}
+
+.search-filter {
+  float: right;
+}
+
+.navbar {
+  background-color: #878C9C;
+}
+
+body {
+  margin-top: 75px;
+}

@@ -1,12 +1,10 @@
-<h3>Recipes:</h3>
-
 <div class="accordion" id="recipes">
 
   <div class="card">
     <div class="card-header" id="headingNewRecipe">
-      <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewRecipe" aria-expanded="false" aria-controls="collapseNewRecipe">
-        <h4>New Recipe</h4>
-      </button>
+      <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewRecipe" aria-expanded="false" aria-controls="collapseNewRecipe">
+        <h4 class="card-title">New Recipe</h4>
+      </a>
     </div>
 
     <div class="collapse" id="collapseNewRecipe" aria-labelledby="NewRecipe" data-parent="#recipes">
@@ -21,9 +19,9 @@
 
     <div class="card">
       <div class="card-header" id="<%= recipe.recipe_name %>Header">
-        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
-          <h4><%= recipe.recipe_name %> x <%= recipe.recipe_quantity %></h4>
-        </button>
+        <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
+          <h4 class="card-title"><%= recipe.recipe_name %> x <%= recipe.recipe_quantity %></h4>
+        </a>
 
         <a class="btn btn-secondary" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
           <i class="fas fa-pencil-alt"></i>

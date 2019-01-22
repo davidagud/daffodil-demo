@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Weddings") do |sheet|
+  sheet.add_row %w(name quantity wedding)
+
+  @order.each do |order|
+    order.flowers.each do |flower|
+      sheet.add_row [flower.flower_name, flower.quantity, flower.recipe.wedding.wedding_name]
+    end
+  end
+end
