@@ -7,13 +7,13 @@
       <div class="input-group">
         <div class="input-group-btn">
           <%= f.hidden_field :wedding_id, value: wedding.id %>
-          <%= f.submit "Add to Cart", class: "btn btn-secondary", id: "add-to-cart-button" %>
+          <%= f.submit "Add to Cart", class: "btn btn-outline-secondary", id: "add-to-cart-button" %>
         </div>
       </div>
     <% end %>
 
     <div>
-      <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+      <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary", id: "delete-wedding-button" %>
     </div>
   </div>
 

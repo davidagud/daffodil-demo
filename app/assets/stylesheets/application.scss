@@ -19,6 +19,13 @@
 
 .navbar-nav {
   width: 100%;
+  font-family: monospace;
+}
+
+.nav-link {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 15px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -41,4 +48,8 @@
 
 body {
   margin-top: 75px;
+}
+
+.btn {
+  border-radius: 0px!important;
 }
