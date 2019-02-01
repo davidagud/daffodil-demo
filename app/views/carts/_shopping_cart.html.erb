@@ -17,13 +17,11 @@
   <% end %>
   Flowers
   <p>
-    <% @order.each do |order| %>
-      <% order.flowers.each do |flower| %>
-        <%= flower.flower_name %>
-        <%= flower.quantity %>
-        <%= flower.recipe.wedding.wedding_name %>
-        </br>
-      <% end %>
+    <% current_order.flowers.each do |flower| %>
+      <%= flower.flower_name %>
+      <%= flower.quantity %>
+      <%= flower.recipe.wedding.wedding_name %>
+      </br>
     <% end %>
   </p>
 <% end %>

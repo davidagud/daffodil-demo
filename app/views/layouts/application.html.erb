@@ -23,8 +23,8 @@
         <li class="nav-item">
           <%= link_to 'FLOWERS', masterflowers_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to "#{current_order.order_items.size} WEDDINGS IN CART", cart_path, class: 'nav-link' %>
+        <li class="nav-item cart-text">
+          <%= render 'layouts/cart_text' %>
         </li>
         <li class="nav-item form-inline ml-auto">
           <%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
