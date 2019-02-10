@@ -36,4 +36,20 @@
 
   <% end %>
 
+  <div class="card">
+    <div class="card-header" id="headingNotes">
+      <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNotes" aria-expanded="false" aria-controls="collapseNotes">
+        <h5>Notes</h5>
+      </button>
+    </div>
+
+    <div class="collapse" id="collapseNotes" aria-labelledby="Notes" data-parent="#ingredients">
+      <div class="card-body">
+        <p>
+          <%= simple_format(@recipe.notes) %>
+        </p>
+      </div>
+    </div>
+  </div>
+
 </div><!--End accordion-->

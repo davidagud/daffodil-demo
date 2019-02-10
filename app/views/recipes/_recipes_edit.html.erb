@@ -1,13 +1,18 @@
 <%= form_with scope: :recipe, url: wedding_recipe_path(@wedding, @recipe), local: true, method: :patch do |form| %>
 
   <p>
-    <%= form.label :recipe_name %>
+    <%= form.label :recipe_name %></br>
     <%= form.text_field :recipe_name %>
   </p>
 
   <p>
-    <%= form.label :recipe_quantity %>
+    <%= form.label :recipe_quantity %></br>
     <%= form.text_field :recipe_quantity %>
+  </p>
+
+  <p>
+    <%= form.label :notes %></br>
+    <%= form.text_area :notes %>
   </p>
 
   <p>

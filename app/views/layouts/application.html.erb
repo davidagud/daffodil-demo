@@ -27,8 +27,9 @@
           <%= render 'layouts/cart_text' %>
         </li>
         <li class="nav-item form-inline ml-auto">
-          <%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
-          <%= form.text_field :q, id: 'q', value: params[:q], placeholder: "search", class: 'form-control' %>
+        <%= form_with(url: weddings_path, method: 'get', local: true) do |form| %>
+          <%= form.text_field :q, id: 'q', value: params[:q], placeholder: "name", class: 'form-control' %>
+          <%= form.text_field :d, id: 'd', value: params[:d], placeholder: "date", class: 'form-control' %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
