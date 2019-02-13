@@ -5,4 +5,10 @@ class Masterflower < ApplicationRecord
     Masterflower.where("masterflower_name #{search_verb} ?", "%#{search_term}%")
   end
 
+  def self.find_price(flowerprice)
+    @masterflowers = Masterflower.all
+    masterflower_id = @masterflowers.where("masterflower_name == '#{flowerprice}'").first.id
+    @masterflowers.find(masterflower_id).masterflower_price
+  end
+
 end

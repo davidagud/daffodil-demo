@@ -2,18 +2,20 @@
 
   <h1 class="title">Viewing All Flowers</h1>
 
-  <%= form_with(url: masterflowers_path, method: 'get', local: true) do |form| %>
-          <%= form.text_field :r, id: 'r', value: params[:r], placeholder: "Search" %>
-    Sort: <%= form.select :t, options_for_sort_masterflowers %>
-          <%= form.submit 'Find' %>
-  <% end %>
+  <div class="flower-search">
+    <%= form_with(url: masterflowers_path, method: 'get', local: true) do |form| %>
+            <%= form.text_field :r, id: 'r', value: params[:r], placeholder: "Search" %>
+      Sort: <%= form.select :t, options_for_sort_masterflowers %>
+            <%= form.submit 'Find' %>
+    <% end %>
+  </div>
 
   <div class="accordion" id="flowers">
 
     <div class="card">
       <div class="card-header" id="headingNewMasterflower">
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewMasterflower" aria-expanded="false" aria-controls="collapseNewMasterflower">
-          <h4>New Masterflower</h4>
+          <h4 class="card-title">New Masterflower</h4>
         </button>
       </div>
 
@@ -30,7 +32,7 @@
         <div class="card">
           <div class="card-header" id="headingOne">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= masterflower.id %>" aria-expanded="true" aria-controls="collapseOne">
-              <h4><%= masterflower.masterflower_name %>
+              <h4 class="card-title"><%= masterflower.masterflower_name %>
               $<%= masterflower.masterflower_price %></h4>
             </button>
           </div>

@@ -63,6 +63,18 @@ class WeddingsController < ApplicationController
     redirect_to wedding_path(@wedding)
   end
 
+  def update_all
+    @wedding = Wedding.find(params[:wedding_id])
+    @masterflowers = Masterflower.all
+
+    @wedding.flowers.each do |flower|
+      @flower = flower
+      @flower.update(:flower_price => flower_price)
+    end
+
+    redirect_to wedding_path(@wedding)
+  end
+
   def destroy
     @wedding = Wedding.find(params[:id])
 
@@ -73,6 +85,10 @@ class WeddingsController < ApplicationController
   private
     def wedding_params
       params.require(:wedding).permit(:wedding_name, :wedding_date, :completed)
+    end
+
+    def flower_price
+      @flower.flower_price = @masterflowers.find_price(@flower.flower_name)
     end
 
 end

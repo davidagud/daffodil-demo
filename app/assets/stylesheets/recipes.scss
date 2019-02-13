@@ -13,7 +13,7 @@
 #wedding-name {
   font-family: monospace;
   color: #545250;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 #wedding-date, #completed {
@@ -48,4 +48,13 @@
 .btn-link {
   font-family: sans-serif;
   color: #545250;
+}
+
+.form-box {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+h5 {
+  font-weight: 300;
 }

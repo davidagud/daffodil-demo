@@ -51,5 +51,14 @@ body {
 }
 
 .btn {
-  border-radius: 0px!important;
+  border-radius: 1px!important;
+}
+
+input, textarea {
+  font-family: sans-serif;
+  color: #545250;
+}
+
+.btn-icon {
+  padding: 4px 9px;
 }

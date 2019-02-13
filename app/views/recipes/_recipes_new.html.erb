@@ -1,20 +1,20 @@
 <%= form_with scope: :recipe, url: wedding_recipes_path(@wedding), local: true do |form| %>
   <p>
-    <%= form.label :recipe_name %></br>
-    <%= form.text_field :recipe_name %>
+    <%= form.label :recipe_name, class: "col-sm-3" %>
+    <%= form.text_field :recipe_name, class: "col-sm-5 form-box" %>
   </p>
 
   <p>
-    <%= form.label :recipe_quantity %></br>
-    <%= form.text_field :recipe_quantity %>
+    <%= form.label :recipe_quantity, class: "col-sm-3" %>
+    <%= form.text_field :recipe_quantity, class: "col-sm-5 form-box" %>
+  </p>
+
+  <p class="row">
+    <%= form.label :notes, class: "col-sm-3" %>
+    <%= form.text_area :notes, size: "20x5", class: "col-sm-5 form-box" %>
   </p>
 
   <p>
-    <%= form.label :notes %></br>
-    <%= form.text_area :notes %>
-  </p>
-
-  <p>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary" %>
   </p>
 <% end %>

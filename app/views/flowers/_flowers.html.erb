@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-header" id="<%= flower.flower_name %>Header">
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
-          <h5><%= flower.quantity %> x <%= flower.flower_name %></h5>
+          <h5><%= flower.quantity %> x <%= flower.flower_name %> x $<%= @masterflowers.find_price(@flower.flower_name) %></h5>
         </button>
       </div>
 
