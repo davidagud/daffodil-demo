@@ -18,14 +18,19 @@
     <% @recipe = recipe %>
 
     <div class="card">
-      <div class="card-header" id="<%= recipe.recipe_name %>Header">
+      <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
         <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
           <h4 class="card-title"><%= recipe.recipe_name %> x <%= recipe.recipe_quantity %></h4>
         </a>
 
-        <a class="btn btn-secondary btn-sm btn-icon" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
-          <i class="fas fa-pencil-alt"></i>
-        </a>
+        <div>
+          <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
+            <h4 class="card-title">Total: $<%= recipe.recipe_total_price %></h4>
+          </a>
+          <a class="btn btn-secondary btn-sm btn-icon" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+        </div>
       </div>
 
       <div class="collapse" id="collapseRecipeEdit<%= recipe.id %>" aria-labelledby="EditRecipe<%= recipe.recipe_name %>" data-parent="#recipes">

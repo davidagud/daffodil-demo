@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_230941) do
+ActiveRecord::Schema.define(version: 2019_02_13_223310) do
 
   create_table "flowers", force: :cascade do |t|
     t.string "flower_name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_230941) do
     t.datetime "updated_at", null: false
     t.integer "recipe_id"
     t.integer "flower_price"
+    t.integer "flower_total_price"
     t.index ["recipe_id"], name: "index_flowers_on_recipe_id"
   end
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_230941) do
     t.datetime "updated_at", null: false
     t.integer "wedding_id"
     t.text "notes"
+    t.integer "recipe_total_price"
     t.index ["wedding_id"], name: "index_recipes_on_wedding_id"
   end
 

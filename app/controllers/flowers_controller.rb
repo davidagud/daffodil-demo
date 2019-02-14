@@ -29,8 +29,8 @@ class FlowersController < ApplicationController
     @recipe = @wedding.recipes.find(params[:recipe_id])
     @masterflowers = Masterflower.all
     @flower = @recipe.flowers.new(flower_params)
-    @flower.update(:flower_price => flower_price)
 
+    @flower.update(:flower_price => flower_price)
     @flower.save!
     redirect_to wedding_path(@wedding)
   end
@@ -43,14 +43,6 @@ class FlowersController < ApplicationController
 
     @flower.update(:flower_price => flower_price)
     @flower.update(flower_params)
-    redirect_to wedding_path(@wedding)
-  end
-
-  def update_all
-    @wedding = Wedding.find(params[:wedding_id])
-    @masterflowers = Masterflower.all
-
-    @wedding.flowers.update(:flower_price => flower_price)
     redirect_to wedding_path(@wedding)
   end
 
