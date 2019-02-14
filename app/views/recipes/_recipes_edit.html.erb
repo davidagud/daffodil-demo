@@ -16,7 +16,7 @@
   </p>
 
   <p>
-    <%= form.submit class: "btn btn-secondary" %>
+    <%= form.submit class: "btn btn-secondary btn-sm", id: "recipe-save-btn" %>
     <%= link_to wedding_recipe_path(@wedding, @recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
       <button role="button" href="" class="btn btn-sm btn-secondary btn-icon">
         <i class="fas fa-trash"></i>

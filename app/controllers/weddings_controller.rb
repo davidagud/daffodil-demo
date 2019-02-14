@@ -50,6 +50,8 @@ class WeddingsController < ApplicationController
       @recipe = recipe
       @recipe.update(:recipe_total_price => recipe_total_price)
     end
+
+    @wedding.update(:total_price => total_price)
   end
 
   def new
@@ -107,6 +109,10 @@ class WeddingsController < ApplicationController
 
     def recipe_total_price
       @recipe.recipe_total_price = @recipe.recipe_quantity * @recipe.flowers.sum(&:flower_total_price)
+    end
+
+    def total_price
+      @wedding.total_price = @wedding.recipes.sum(&:recipe_total_price)
     end
 
 end

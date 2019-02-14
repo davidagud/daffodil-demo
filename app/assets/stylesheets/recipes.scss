@@ -16,14 +16,22 @@
   font-size: 3em;
 }
 
-#wedding-date, #completed {
+#wedding-date, #completed, #total-price {
   font-size: 1.5em;
 }
 
-#wedding-date, #completed, #recipes, #edit-form {
+#wedding-date, #completed, #total-price, #recipes, #edit-form {
   font-family: sans-serif;
   font-weight: 300;
   color: #545250;
+}
+
+#ingredients {
+  width: 100%;
+}
+
+#recipe-save-btn {
+  margin-left: 25%;
 }
 
 .btn-link:hover {
@@ -41,10 +49,6 @@
   width: 100%;
 }
 
-#ingredients {
-  width: 100%;
-}
-
 .btn-link {
   font-family: sans-serif;
   color: #545250;
@@ -57,4 +61,5 @@
 
 h5 {
   font-weight: 300;
+  font-size: 1rem;
 }

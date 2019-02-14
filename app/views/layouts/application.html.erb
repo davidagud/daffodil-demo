@@ -41,7 +41,9 @@
           </div>
         </li>
         <li class="nav-item form-inline">
-          <%= form.submit 'find', class: 'btn btn-secondary' %>
+          <%= button_tag( :class => "btn btn-secondary btn-sm") do %>
+            <i class="fas fa-search"></i>
+          <% end %>
         </li>
         <% end %>
       </ul>

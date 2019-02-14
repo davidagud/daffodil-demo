@@ -15,6 +15,10 @@
         <% if @wedding.completed === true %> Completed <% else %> Not Completed <% end %>
       </h3>
 
+      <h3 id="total-price">
+        Total Price: $<%= @wedding.total_price %>
+      </h3>
+
       <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
         <div class="well">
           <%= render "edit" %>
@@ -25,7 +29,7 @@
     <div class="col-sm-8">
       <% @recipes = @wedding.recipes %>
       <%= render "recipes/recipes" %>
-      <%= button_to "Update All", weddings_update_all_path(:wedding_id => @wedding.id) %>
+      <%= button_to "Update All", weddings_update_all_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "update-button" %>
 
     </div>
 
