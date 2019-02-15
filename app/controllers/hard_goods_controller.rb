@@ -9,7 +9,7 @@ class HardGoodsController < ApplicationController
   def show
     @wedding = Wedding.find(params[:wedding_id])
     @recipe = @wedding.recipes.find(params[:recipe_id])
-    @hard_good = @recipe.hard_good.find(params[:id])
+    @hard_good = @recipe.hard_goods.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class HardGoodsController < ApplicationController
   def edit
     @wedding = Wedding.find(params[:wedding_id])
     @recipe = @wedding.recipes.find(params[:recipe_id])
-    @hard_good = @recipe.hard_good.find(params[:id])
+    @hard_good = @recipe.hard_goods.find(params[:id])
   end
 
   def create
@@ -35,7 +35,7 @@ class HardGoodsController < ApplicationController
   def update
     @wedding = Wedding.find(params[:wedding_id])
     @recipe = @wedding.recipes.find(params[:recipe_id])
-    @hard_good = @recipe.hard_good.find(params[:id])
+    @hard_good = @recipe.hard_goods.find(params[:id])
 
     @hard_good.update(hard_good_params)
     redirect_to wedding_path(@wedding)

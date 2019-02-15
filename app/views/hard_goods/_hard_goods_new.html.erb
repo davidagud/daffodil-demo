@@ -1,0 +1,20 @@
+<%= form_with scope: :hard_good, url: wedding_recipe_hard_goods_path(@wedding, @recipe), local: true do |form| %>
+  <p>
+    <%= form.label :hard_good_name %>:
+    <%= form.text_field :hard_good_name %>
+  </p>
+
+  <p>
+    <%= form.label :hard_good_price %>:
+    <%= form.text_field :hard_good_price %>
+  </p>
+
+  <p>
+    <%= form.label :hard_good_quantity %>:
+    <%= form.text_field :hard_good_quantity %>
+  </p>
+
+  <p id="submit-button">
+    <%= form.submit class: "btn btn-secondary" %>
+  </p>
+<% end %>

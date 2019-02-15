@@ -1,6 +1,6 @@
 <%= form_with scope: :flower, url: wedding_recipe_flower_path(@wedding, @recipe, @flower), local: true, method: :patch do |form| %>
   <p>
-    <%= form.label :quantity %>
+    <%= form.label :quantity %>:
     <%= form.text_field :quantity %>
 
     <%= form.submit class: "btn btn-secondary btn-sm"%>

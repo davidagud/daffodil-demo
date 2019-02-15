@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :weddings do
     resources :recipes do
       resources :flowers
+      resources :hard_goods
     end
   end
 

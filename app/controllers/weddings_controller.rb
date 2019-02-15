@@ -46,6 +46,11 @@ class WeddingsController < ApplicationController
       @flower.update(:flower_total_price => flower_total_price)
     end
 
+    @wedding.hard_goods.each do |hard_good|
+      @hard_good = hard_good
+      @hard_good.update(:hard_good_total_price => hard_good_total_price)
+    end
+
     @wedding.recipes.each do |recipe|
       @recipe = recipe
       @recipe.update(:recipe_total_price => recipe_total_price)
@@ -108,11 +113,15 @@ class WeddingsController < ApplicationController
     end
 
     def recipe_total_price
-      @recipe.recipe_total_price = @recipe.recipe_quantity * @recipe.flowers.sum(&:flower_total_price)
+      @recipe.recipe_total_price = @recipe.recipe_quantity * (@recipe.flowers.sum(&:flower_total_price) + @recipe.hard_goods.sum(&:hard_good_total_price))
     end
 
     def total_price
       @wedding.total_price = @wedding.recipes.sum(&:recipe_total_price)
+    end
+
+    def hard_good_total_price
+      @hard_good.hard_good_total_price = @hard_good.hard_good_quantity * @hard_good.hard_good_price
     end
 
 end

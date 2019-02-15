@@ -2,6 +2,7 @@ class Wedding < ApplicationRecord
   belongs_to :order, optional: true
   has_many :recipes, :dependent => :destroy
   has_many :flowers, through: :recipes, :dependent => :destroy
+  has_many :hard_goods, through: :recipes, :dependent => :destroy
 
   def self.filter(status)
     Wedding.where("completed == #{status}")

@@ -44,6 +44,10 @@
           <p>
             <% @flowers = recipe.flowers %>
             <%= render "flowers/flowers" %>
+            <% @hard_goods = recipe.hard_goods %>
+            <%= render "hard_goods/hard_goods" %>
+            <% @notes = recipe.notes %>
+            <%= render "notes/notes" %>
           </p>
         </div>
       </div>
