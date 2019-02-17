@@ -15,13 +15,25 @@
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
   <% end %>
-  Flowers
+  <h3><strong>Flowers</strong></h3>
   <p>
-    <% current_order.flowers.each do |flower| %>
-      <%= flower.flower_name %>
-      <%= flower.quantity %>
-      <%= flower.recipe.wedding.wedding_name %>
-      </br>
+    <% current_order.weddings.each do |wedding| %>
+      <h4><%= wedding.wedding_name %></h4>
+      <h6>Flowers:</h6>
+      <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+        <%= flower_name %>: <em><%= sum %></em></br>
+      <% end %></br>
+      <h6>Hard Goods:</h6>
+      <% wedding.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum| %>
+        <%= hard_good_name %>: <em><%= sum %></em></br>
+      <% end %>
+    </br>
     <% end %>
   </p>
+
+  <h3><strong>Total Flowers</strong></h3>
+  <% current_order.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+    <%= flower_name %>: <em><%= sum %></em></br>
+  <% end %>
+
 <% end %>

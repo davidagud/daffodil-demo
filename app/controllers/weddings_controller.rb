@@ -1,6 +1,6 @@
 class WeddingsController < ApplicationController
   def index
-    @weddings = Wedding.all
+    @weddings = Wedding.all.filter(false).order('wedding_date ASC')
 
     if params[:q] || params[:d] || params[:v] || params[:h]
       search_term = params[:q]
@@ -86,10 +86,34 @@ class WeddingsController < ApplicationController
 
     @wedding.flowers.each do |flower|
       @flower = flower
-      @flower.update(:flower_price => flower_price)
+      if find_name(@flower.flower_name).empty?
+        @flower.update(:flower_price => 0)
+      else
+        @flower.update(:flower_price => flower_price)
+        @flower.update(:flower_vendor => flower_vendor)
+      end
     end
 
     redirect_to wedding_path(@wedding)
+  end
+
+  def update_all_weddings
+    @weddings = Wedding.all
+    @masterflowers = Masterflower.all
+
+    @weddings.each do |wedding|
+      wedding.flowers.each do |flower|
+        @flower = flower
+        if find_name(@flower.flower_name).empty?
+          @flower.update(:flower_price => 0)
+        else
+          @flower.update(:flower_price => flower_price)
+          @flower.update(:flower_vendor => flower_vendor)
+        end
+      end
+    end
+
+    redirect_to weddings_path
   end
 
   def destroy
@@ -101,11 +125,15 @@ class WeddingsController < ApplicationController
 
   private
     def wedding_params
-      params.require(:wedding).permit(:wedding_name, :wedding_date, :completed)
+      params.require(:wedding).permit(:wedding_name, :wedding_date, :completed, :total_price)
     end
 
     def flower_price
       @flower.flower_price = @masterflowers.find_price(@flower.flower_name)
+    end
+
+    def flower_vendor
+      @flower.flower_vendor = @masterflowers.find_vendor(@flower.flower_name)
     end
 
     def flower_total_price
@@ -122,6 +150,11 @@ class WeddingsController < ApplicationController
 
     def hard_good_total_price
       @hard_good.hard_good_total_price = @hard_good.hard_good_quantity * @hard_good.hard_good_price
+    end
+
+    def find_name(flower_name)
+      @masterflowers = Masterflower.all
+      @masterflowers.where("masterflower_name == '#{flower_name}'")
     end
 
 end

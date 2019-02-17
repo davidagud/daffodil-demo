@@ -31,6 +31,7 @@ class FlowersController < ApplicationController
     @flower = @recipe.flowers.new(flower_params)
 
     @flower.update(:flower_price => flower_price)
+    @flower.update(:flower_vendor => flower_vendor)
     @flower.save!
     redirect_to wedding_path(@wedding)
   end
@@ -42,6 +43,7 @@ class FlowersController < ApplicationController
     @masterflowers = Masterflower.all
 
     @flower.update(:flower_price => flower_price)
+    @flower.update(:flower_vendor => flower_vendor)
     @flower.update(flower_params)
     redirect_to wedding_path(@wedding)
   end
@@ -57,11 +59,15 @@ class FlowersController < ApplicationController
 
   private
     def flower_params
-      params.require(:flower).permit(:flower_name, :quantity, :flower_price)
+      params.require(:flower).permit(:flower_name, :quantity, :flower_price, :flower_vendor)
     end
 
     def flower_price
       @flower.flower_price = @masterflowers.find_price(@flower.flower_name)
+    end
+
+    def flower_vendor
+      @flower.flower_vendor = @masterflowers.find_vendor(@flower.flower_name)
     end
 
 end

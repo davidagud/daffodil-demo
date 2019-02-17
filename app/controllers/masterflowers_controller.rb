@@ -47,7 +47,7 @@ class MasterflowersController < ApplicationController
 
   private
     def masterflower_params
-      params.require(:masterflower).permit(:masterflower_name, :masterflower_price)
+      params.require(:masterflower).permit(:masterflower_name, :masterflower_price, :vendor)
     end
 
 end

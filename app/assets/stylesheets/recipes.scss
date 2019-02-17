@@ -2,30 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#wedding-frame {
-  border: 5px solid #E7CAC3;
-  background-color: #E7CAC3;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 100px;
-}
-
-#wedding-name {
-  font-family: monospace;
-  color: #545250;
-  font-size: 3em;
-}
-
-#wedding-date, #completed, #total-price {
-  font-size: 1.5em;
-}
-
-#wedding-date, #completed, #total-price, #recipes, #edit-form {
-  font-family: sans-serif;
-  font-weight: 300;
-  color: #545250;
-}
-
 #ingredients {
   width: 100%;
 }
@@ -57,6 +33,10 @@
 .form-box {
   padding-left: 3px;
   padding-right: 3px;
+}
+
+.deleted {
+  color: red;
 }
 
 h5 {

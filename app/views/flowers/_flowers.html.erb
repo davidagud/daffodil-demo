@@ -15,17 +15,17 @@
   </div>
 
 
-  <% @flowers.each do |flower| %>
+  <% @flowers.order('flower_name ASC').each do |flower| %>
     <% @flower = flower %>
 
     <div class="card">
       <div class="card-header row justify-content-between" id="<%= flower.flower_name %>Header">
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
-          <h5><%= flower.quantity %> x <%= flower.flower_name %></h5>
+          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>"><%= flower.flower_name %> (<%= flower.quantity %>)</h5>
         </button>
 
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
-          <h5>Total: $<%= flower.flower_total_price %></h5>
+          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>">Total: $<%= flower.flower_total_price %></h5>
         </button>
 
       </div>

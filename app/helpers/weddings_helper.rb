@@ -5,7 +5,7 @@ module WeddingsHelper
   end
 
   def options_for_sort
-    [["Newest", "created_at DESC"], ["Oldest", "created_at ASC"], ["A-Z", "wedding_name ASC"], ["Z-A", "wedding_name DESC"], ["Date", "wedding_date DESC"]]
+    [["Furthest", "wedding_date DESC"], ["Soonest", "wedding_date ASC"], ["Newest", "created_at DESC"], ["Oldest", "created_at ASC"], ["A-Z", "wedding_name ASC"], ["Z-A", "wedding_name DESC"]]
   end
 
 end

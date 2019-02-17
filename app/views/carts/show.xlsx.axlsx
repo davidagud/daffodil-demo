@@ -3,7 +3,28 @@ wb = xlsx_package.workbook
 wb.add_worksheet(name: "Weddings") do |sheet|
   sheet.add_row %w(name quantity wedding)
 
-  current_order.flowers.each do |flower|
-    sheet.add_row [flower.flower_name, flower.quantity, flower.recipe.wedding.wedding_name]
+  current_order.weddings.each do |wedding|
+
+  sheet.add_row [wedding.wedding_name]
+
+    wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum|
+      sheet.add_row [flower_name, sum]
+    end
+  end
+end
+
+wb.add_worksheet(name: "Flowers") do |sheet|
+  sheet.add_row %w(name quantity)
+
+  current_order.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum|
+    sheet.add_row [flower_name, sum]
+  end
+end
+
+wb.add_worksheet(name: "Hard Goods") do |sheet|
+  sheet.add_row %w(name quantity)
+
+  current_order.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum|
+    sheet.add_row [hard_good_name, sum]
   end
 end

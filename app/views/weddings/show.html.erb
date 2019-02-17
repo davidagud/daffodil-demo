@@ -7,17 +7,53 @@
         </a>
       </h4>
 
-      <h3 id="wedding-date">
+      <h4 id="wedding-date">
         <%= @wedding.wedding_date.to_s(:long_ordinal) %>
-      </h3>
+      </h4>
 
-      <h3 id="completed">
+      <h4 id="completed">
         <% if @wedding.completed === true %> Completed <% else %> Not Completed <% end %>
-      </h3>
+      </h4>
 
-      <h3 id="total-price">
-        Total Price: $<%= @wedding.total_price %>
-      </h3>
+      <h4 id="total-price">
+        Retail Price:
+        <% recipe_retail_prices = [] %>
+        <% @wedding.recipes.each do |recipe| %>
+          <% if recipe.retail_price.nil? %>
+            <% recipe_retail_prices.clear %>
+            <% recipe_retail_prices.push("Test") %>
+          <% else %>
+            <% recipe_retail_prices.push(recipe.retail_price * recipe.recipe_quantity) %>
+          <% end %>
+          <% break if recipe_retail_prices[0] == "Test" %>
+        <% end %>
+        <% if recipe_retail_prices[0] == "Test" %>
+          Check Recipe Retail Prices
+        <% else %>
+          <% recipe_retail_prices = recipe_retail_prices.sum %>
+          $<%= recipe_retail_prices %>
+        <% end %>
+      </h4>
+
+      <h4 id="total-price">
+        Cost: $<%= @wedding.total_price %>
+      </h4>
+
+      <% if recipe_retail_prices[0] == "Test" %>
+
+      <% else %>
+        <h4 id="profit">
+          Profit: $<%= recipe_retail_prices.to_i - @wedding.total_price %>
+        </4>
+
+        <h4 id="markup">
+          <% if (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).nan? || (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).infinite? then %>
+
+          <% else %>
+            Markup: <%= (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).to_i %>%
+          <% end %>
+        </h4>
+      <% end %>
 
       <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
         <div class="well">

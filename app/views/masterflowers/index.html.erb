@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="title">Viewing All Flowers</h1>
+  <h1 class="title">All Flowers</h1>
 
   <div class="flower-search">
     <%= form_with(url: masterflowers_path, method: 'get', local: true) do |form| %>
@@ -26,14 +26,17 @@
       </div>
     </div>
 
-    <% @masterflowers.each do |masterflower| %>
+    <% @masterflowers.order('masterflower_name ASC').each do |masterflower| %>
       <% @masterflower = masterflower %>
 
         <div class="card">
           <div class="card-header" id="headingOne">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= masterflower.id %>" aria-expanded="true" aria-controls="collapseOne">
-              <h4 class="card-title"><%= masterflower.masterflower_name %>
-              $<%= masterflower.masterflower_price %></h4>
+              <h4 class="card-title">
+                <%= masterflower.masterflower_name %>
+                $<%= masterflower.masterflower_price %>
+                (<%= if masterflower.vendor? then masterflower.vendor else "Vendor" end %>)
+              </h4>
             </button>
           </div>
 

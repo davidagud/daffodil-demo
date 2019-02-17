@@ -14,18 +14,29 @@
     </div>
   </div>
 
-  <% @recipes.each do |recipe| %>
+  <% @recipes.order('recipe_name ASC').each do |recipe| %>
     <% @recipe = recipe %>
 
     <div class="card">
       <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
         <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
-          <h4 class="card-title"><%= recipe.recipe_name %> x <%= recipe.recipe_quantity %></h4>
+          <h5 class="card-title"><%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)</h5>
         </a>
 
         <div>
           <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
-            <h4 class="card-title">Total: $<%= recipe.recipe_total_price %></h4>
+            <h5 class="card-title">
+              <% if recipe.retail_price.nil? then %>
+                Retail Price: Not Set, Cost: $<%= recipe.recipe_total_price %>
+              <% else %>
+                Retail Price: $<%= recipe.retail_price * recipe.recipe_quantity %>,
+                Cost: $<%= recipe.recipe_total_price %>,
+                Profit: $<%= (recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price %>,
+                Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
+                          <%= ((((recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price).to_f / recipe.recipe_total_price) * 100).to_i %>%
+                        <% end %>
+              <% end %>
+            </h5>
           </a>
           <a class="btn btn-secondary btn-sm btn-icon" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
             <i class="fas fa-pencil-alt"></i>

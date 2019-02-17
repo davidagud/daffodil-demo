@@ -11,4 +11,10 @@ class Masterflower < ApplicationRecord
     @masterflowers.find(masterflower_id).masterflower_price
   end
 
+  def self.find_vendor(flower_vendor)
+    @masterflowers = Masterflower.all
+    masterflower_id = @masterflowers.where("masterflower_name == '#{flower_vendor}'").first.id
+    @masterflowers.find(masterflower_id).vendor
+  end
+
 end

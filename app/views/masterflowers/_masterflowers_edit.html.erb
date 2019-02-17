@@ -1,13 +1,18 @@
 <%= form_with scope: :masterflower, url: masterflower_path(@masterflower), local: true, method: :patch do |form| %>
 
   <p>
-    <%= form.label :masterflower_name %>
+    <%= form.label :masterflower_name %>:
     <%= form.text_field :masterflower_name %>
   </p>
 
   <p>
-    <%= form.label :masterflower_price %>
+    <%= form.label :masterflower_price %>:
     <%= form.text_field :masterflower_price %>
+  </p>
+
+  <p>
+    <%= form.label :vendor %>:
+    <%= form.text_field :vendor %>
   </p>
 
   <p>

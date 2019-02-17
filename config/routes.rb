@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'carts/show'
   get 'list/index'
   post 'weddings/update_all'
+  post 'weddings/update_all_weddings'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :weddings do

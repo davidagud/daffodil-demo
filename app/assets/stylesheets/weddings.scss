@@ -105,3 +105,27 @@
   margin-top: 20px;
   margin-left: 20px;
 }
+
+#wedding-frame {
+  border: 5px solid #E7CAC3;
+  background-color: #E7CAC3;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+#wedding-name {
+  font-family: monospace;
+  color: #545250;
+  font-size: 2.5em;
+}
+
+#wedding-date, #completed, #total-price, #profit, #markup {
+  font-size: 1.2em;
+}
+
+#wedding-date, #completed, #total-price, #recipes, #edit-form, #profit, #markup {
+  font-family: sans-serif;
+  font-weight: 300;
+  color: #545250;
+}
