@@ -94,6 +94,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    deep_cloneable (2.4.0)
+      activerecord (>= 3.1.0, < 6)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -237,6 +239,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  deep_cloneable (~> 2.4.0)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

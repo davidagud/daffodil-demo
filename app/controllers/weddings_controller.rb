@@ -116,6 +116,16 @@ class WeddingsController < ApplicationController
     redirect_to weddings_path
   end
 
+  def copy_wedding
+    @wedding = Wedding.find(params[:wedding_id])
+
+    new_wedding = @wedding.deep_clone :include => [:recipes => [:flowers, :hard_goods]]
+    new_wedding.wedding_name = new_wedding.wedding_name + " (copy)"
+    new_wedding.save!
+
+    redirect_to wedding_path(new_wedding)
+  end
+
   def destroy
     @wedding = Wedding.find(params[:id])
 
