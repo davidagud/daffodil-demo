@@ -57,6 +57,12 @@ class WeddingsController < ApplicationController
     end
 
     @wedding.update(:total_price => total_price)
+
+    respond_to do |format|
+      wedding_name = @wedding.wedding_name
+      format.html
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
+    end
   end
 
   def new
@@ -124,6 +130,15 @@ class WeddingsController < ApplicationController
     new_wedding.save!
 
     redirect_to wedding_path(new_wedding)
+  end
+
+  def send_wedding_email
+    @wedding = Wedding.find(params[:wedding_id])
+
+    wedding_path(@wedding.id, format: "xlsx", method: :get)
+    WeddingMailer.with(wedding: @wedding).wedding_email.deliver_now
+
+    redirect_to weddings_path
   end
 
   def destroy
