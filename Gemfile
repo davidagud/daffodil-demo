@@ -62,6 +62,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Preview mailer in browser
   gem 'letter_opener_web', '~> 1.0'
+  # Set environment variables
+  gem 'figaro'
 end
 
 group :test do
