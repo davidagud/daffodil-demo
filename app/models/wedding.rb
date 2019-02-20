@@ -9,12 +9,10 @@ class Wedding < ApplicationRecord
   end
 
   def self.search(search_term)
-    search_verb = "ilike"
-    Wedding.where("wedding_name #{search_verb} ?", "%#{search_term}%")
+    Wedding.where("wedding_name ilike ?", "%#{search_term}%")
   end
 
   def self.date_search(search_date)
-    search_verb = "ilike"
     Wedding.where("CAST (wedding_date AS character varying) ilike ?", "%#{search_date}%")
   end
 
