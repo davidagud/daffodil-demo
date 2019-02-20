@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_054423) do
+ActiveRecord::Schema.define(version: 2019_02_20_205212) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "flowers", force: :cascade do |t|
     t.string "flower_name"
     t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "recipe_id"
+    t.bigint "recipe_id"
     t.integer "flower_price"
     t.integer "flower_total_price"
     t.string "flower_vendor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_flowers_on_recipe_id"
   end
 
@@ -29,25 +32,25 @@ ActiveRecord::Schema.define(version: 2019_02_16_054423) do
     t.integer "hard_good_quantity"
     t.integer "hard_good_price"
     t.integer "hard_good_total_price"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "recipe_id"
     t.index ["recipe_id"], name: "index_hard_goods_on_recipe_id"
   end
 
   create_table "masterflowers", force: :cascade do |t|
     t.string "masterflower_name"
     t.integer "masterflower_price"
+    t.string "vendor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "vendor"
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
+    t.bigint "order_id"
+    t.bigint "wedding_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "wedding_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["wedding_id"], name: "index_order_items_on_wedding_id"
   end
@@ -61,22 +64,24 @@ ActiveRecord::Schema.define(version: 2019_02_16_054423) do
     t.string "recipe_name"
     t.string "recipe_ingredient"
     t.integer "recipe_quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "wedding_id"
-    t.text "notes"
     t.integer "recipe_total_price"
     t.integer "retail_price"
+    t.text "notes"
+    t.bigint "wedding_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["wedding_id"], name: "index_recipes_on_wedding_id"
   end
 
   create_table "weddings", force: :cascade do |t|
     t.string "wedding_name"
     t.date "wedding_date"
+    t.boolean "completed"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "completed", default: false
-    t.integer "total_price"
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "weddings"
 end

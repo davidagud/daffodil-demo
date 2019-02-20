@@ -5,7 +5,7 @@ class CreateHardGoods < ActiveRecord::Migration[5.2]
       t.integer :hard_good_quantity
       t.integer :hard_good_price
       t.integer :hard_good_total_price
-      t.references :recipes, foreign_key: true
+      t.references :recipe
 
       t.timestamps
     end

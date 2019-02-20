@@ -1,7 +1,7 @@
 module WeddingsHelper
 
   def options_for_completed
-    [["Either", "true || completed == false" ], ["Completed", "true"], ["Not Completed", "false"]]
+    [["Either", "true OR completed = false" ], ["Completed", "true"], ["Not Completed", "false"]]
   end
 
   def options_for_sort

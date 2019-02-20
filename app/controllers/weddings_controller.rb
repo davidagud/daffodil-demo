@@ -5,7 +5,7 @@ class WeddingsController < ApplicationController
     if params[:q] || params[:d] || params[:v] || params[:h]
       search_term = params[:q]
       if params[:d].blank?
-        search_date = ""
+        search_date = ''
       else
         search_date = params[:d]
       end
@@ -179,7 +179,7 @@ class WeddingsController < ApplicationController
 
     def find_name(flower_name)
       @masterflowers = Masterflower.all
-      @masterflowers.where("masterflower_name == '#{flower_name}'")
+      @masterflowers.where("masterflower_name = '#{flower_name}'")
     end
 
 end
