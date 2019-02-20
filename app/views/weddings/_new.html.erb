@@ -1,7 +1,7 @@
 <%= form_with scope: :wedding, url: weddings_path, local: true do |form| %>
   <p>
     <%= form.label :wedding_name %>
-    <%= form.text_field :wedding_name %>
+    <%= form.text_field :wedding_name, class: "text-field" %>
   </p>
 
   <p>
@@ -15,6 +15,6 @@
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary" %>
   </p>
 <% end %>

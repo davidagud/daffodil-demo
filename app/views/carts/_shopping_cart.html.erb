@@ -1,3 +1,5 @@
+<h1 id="title">Current Weddings in Cart </h1>
+
 <% if !@order_item.nil? && @order_item.errors.any? %>
   <div class="alert alert-danger">
     <ul>
@@ -12,28 +14,27 @@
     There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some weddings to your cart.
   </p>
 <% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
-  <% end %>
-  <h3><strong>Flowers</strong></h3>
-  <p>
-    <% current_order.weddings.each do |wedding| %>
-      <h4><%= wedding.wedding_name %></h4>
-      <h6>Flowers:</h6>
-      <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
-        <%= flower_name %>: <em><%= sum %></em></br>
-      <% end %></br>
-      <h6>Hard Goods:</h6>
-      <% wedding.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum| %>
-        <%= hard_good_name %>: <em><%= sum %></em></br>
-      <% end %>
-    </br>
-    <% end %>
-  </p>
+  <div class="row justify-content-around">
 
-  <h3><strong>Total Flowers</strong></h3>
-  <% current_order.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
-    <%= flower_name %>: <em><%= sum %></em></br>
-  <% end %>
+    <div class="col-sm-8 weddings-column">
+      <% @order_items.each do |order_item| %>
+        <div class="col-sm-12 cart-row">
+          <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
+        </div>
+      <% end %>
+      <%= link_to "Export as spreadsheet", cart_path(format: "xlsx"), class: "btn btn-secondary" %>
+    </div>
+
+    <div class="col-sm-3 cart-sidebar">
+      <h2 id="cart-total">Cart Total</h2>
+      <div>
+        <% current_order.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+          <div class="row justify-content-between name-sums">
+            <div class="col-sm-9"><%= flower_name %>:</div><div class="col-sm-1" id="sum"><%= sum %></div></br>
+          </br>
+          </div>
+        <% end %>
+      </div>
+  </div>
 
 <% end %>

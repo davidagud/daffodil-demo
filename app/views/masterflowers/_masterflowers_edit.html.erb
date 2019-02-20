@@ -2,23 +2,23 @@
 
   <p>
     <%= form.label :masterflower_name %>:
-    <%= form.text_field :masterflower_name %>
+    <%= form.text_field :masterflower_name, class: "text-field" %>
   </p>
 
   <p>
     <%= form.label :masterflower_price %>:
-    <%= form.text_field :masterflower_price %>
+    <%= form.text_field :masterflower_price, class: "text-field" %>
   </p>
 
   <p>
     <%= form.label :vendor %>:
-    <%= form.text_field :vendor %>
+    <%= form.text_field :vendor, class: "text-field" %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary"%>
     <%= link_to masterflower_path(@masterflower), method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <button role="button" href="">
+      <button role="button" href="" class="btn btn-secondary">
         <i class="fas fa-trash"></i>
       </button>
     <% end %>

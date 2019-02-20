@@ -1,7 +1,7 @@
 <%= form_with scope: :wedding, url: wedding_path(@wedding), local: true, method: :patch do |form| %>
   <p id="edit-form">
     <%= form.label :wedding_name %>:
-    <%= form.text_field :wedding_name %>
+    <%= form.text_field :wedding_name, class: "text-field" %>
   </p>
 
   <p id="edit-form">

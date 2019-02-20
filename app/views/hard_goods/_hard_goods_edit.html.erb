@@ -1,17 +1,17 @@
 <%= form_with scope: :hard_good, url: wedding_recipe_hard_good_path(@wedding, @recipe, @hard_good), local: true, method: :patch do |form| %>
   <p>
     <%= form.label :hard_good_name %>:
-    <%= form.text_field :hard_good_name %>
+    <%= form.text_field :hard_good_name, class: "text-field" %>
   </p>
 
   <p>
     <%= form.label :hard_good_price %>:
-    <%= form.text_field :hard_good_price %>
+    <%= form.text_field :hard_good_price, class: "text-field" %>
   </p>
 
   <p>
     <%= form.label :hard_good_quantity %>:
-    <%= form.text_field :hard_good_quantity %>
+    <%= form.text_field :hard_good_quantity, class: "text-field" %>
   </p>
 
   <p>

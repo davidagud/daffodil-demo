@@ -4,4 +4,29 @@
 .flower-search {
   margin-bottom: 20px;
   margin-top: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+.flower-search .btn {
+  font-family: monospace;
+  margin-left: 20px;
+  border: none!important;
+}
+
+.flower-search input {
+  margin-right: 10px;
+  border: 1px solid #ced4da !important;
+  border-radius: .25rem;
+  box-shadow: none!important;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+
+#r {
+  font-family: monospace!important;
+  padding: 2px 10px;
 }

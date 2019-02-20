@@ -1,16 +1,45 @@
-<div class="well">
-
+<div class="row justify-content-between align-items-center">
   <div class="row">
-    <div class="col-xs-8">
-      <h4><%= wedding.wedding_name %></h4>
-    </div>
-
-    <div class="col-xs-4">
-      <%= form_for order_item, remote: true do |f| %>
-        <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete wedding '#{order_item.wedding.wedding_name}' from your cart?"}, method: :delete, remote: true, class: "btn btn-danger" } %>
-      <% end %>
-    </div>
-
+    <div id="wedding-name"><%= link_to wedding.wedding_name, wedding_path(wedding), id: "wedding-name" %></div>
+    <a class="align-self-center circle-plus-<%= wedding.wedding_name %> closed" data-toggle="collapse" href="#collapse<%= wedding.wedding_name %>Flowers" role="button" aria-expand="false" aria-controls="collapse<%= wedding.wedding_name %>Flowers">
+      <div class="circle">
+        <div class="horizontal fas fa-minus"></div>
+        <div class="vertical fas fa-minus"></div>
+      </div>
+    </a>
   </div>
 
+  <div>
+    <%= form_for order_item, remote: true do |f| %>
+      <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete wedding '#{order_item.wedding.wedding_name}' from your cart?"}, method: :delete, remote: true, class: "btn btn-outline-secondary", id: "delete-wedding-button" } %>
+    <% end %>
+  </div>
 </div>
+
+<div class="collapse" id="collapse<%= wedding.wedding_name %>Flowers">
+  <div class="card card-body">
+    <strong>Flowers:</strong>
+    <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+      <hr>
+      <div class="row">
+        <div id="flower-row"><%= flower_name %>:</div>
+        <div id="flower-row"><%= sum %></div></br>
+      </div>
+    <% end %></br>
+    <strong>Hard Goods:</strong>
+    <% wedding.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum| %>
+      <hr>
+      <div class="row">
+        <div id="flower-row"><%= hard_good_name %>:</div>
+        <div id="flower-row"><%= sum %></div></br>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<script>
+  $('.circle-plus-<%= wedding.wedding_name %>').on('click', function(){
+    $(this).toggleClass('opened');
+  })
+</script>

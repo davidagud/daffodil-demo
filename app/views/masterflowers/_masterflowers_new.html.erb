@@ -1,22 +1,20 @@
-<h5>Create a new flower</h5>
-
 <%= form_with scope: :masterflower, url: masterflowers_path, local: true do |form| %>
   <p>
     <%= form.label :masterflower_name %>:
-    <%= form.text_field :masterflower_name %>
+    <%= form.text_field :masterflower_name, class: "text-field"%>
   </p>
 
   <p>
     <%= form.label :masterflower_price %>:
-    <%= form.text_field :masterflower_price %>
+    <%= form.text_field :masterflower_price, class: "text-field" %>
   </p>
 
   <p>
     <%= form.label :vendor %>:
-    <%= form.text_field :vendor %>
+    <%= form.text_field :vendor, class: "text-field" %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary"%>
   </p>
 <% end %>

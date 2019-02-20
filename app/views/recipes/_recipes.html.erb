@@ -19,25 +19,30 @@
 
     <div class="card">
       <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
-        <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
-          <h5 class="card-title"><%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)</h5>
-        </a>
-
-        <div>
+        <div class="col-sm-11 recipe-header">
           <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
-            <h5 class="card-title">
-              <% if recipe.retail_price.nil? then %>
-                Retail Price: Not Set, Cost: $<%= recipe.recipe_total_price %>
-              <% else %>
-                Retail Price: $<%= recipe.retail_price * recipe.recipe_quantity %>,
-                Cost: $<%= recipe.recipe_total_price %>,
-                Profit: $<%= (recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price %>,
-                Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
-                          <%= ((((recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price).to_f / recipe.recipe_total_price) * 100).to_i %>%
-                        <% end %>
-              <% end %>
-            </h5>
+            <h5 class="card-title"><%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)</h5>
           </a>
+
+          <div>
+            <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
+              <h5 class="card-title">
+                <% if recipe.retail_price.nil? then %>
+                  Retail: Not Set, Cost: $<%= recipe.recipe_total_price %>
+                <% else %>
+                  Retail: $<%= recipe.retail_price * recipe.recipe_quantity %>,
+                  Cost: $<%= recipe.recipe_total_price %>,
+                  Profit: $<%= (recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price %>,
+                  Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
+                            <%= ((((recipe.retail_price * recipe.recipe_quantity) - recipe.recipe_total_price).to_f / recipe.recipe_total_price) * 100).to_i %>%
+                          <% end %>
+                <% end %>
+              </h5>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-sm-1 align-self-center">
           <a class="btn btn-secondary btn-sm btn-icon" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
             <i class="fas fa-pencil-alt"></i>
           </a>

@@ -17,7 +17,7 @@ wb.add_worksheet(name: "Recipes") do |sheet|
 end
 
 wb.add_worksheet(name: "Flowers") do |sheet|
-  sheet.add_row %w(NAME QUANTITY)
+  sheet.add_row %w(NAME QTY)
 
   wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum|
     sheet.add_row [flower_name, sum]
@@ -25,7 +25,7 @@ wb.add_worksheet(name: "Flowers") do |sheet|
 end
 
 wb.add_worksheet(name: "Hard Goods") do |sheet|
-  sheet.add_row %w(NAME QUANTITY IND-PRICE TOT-PRICE)
+  sheet.add_row %w(NAME QTY IND-PRICE TOT-PRICE)
 
   wedding.recipes.each do |recipe|
 

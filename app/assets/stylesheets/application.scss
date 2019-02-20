@@ -16,6 +16,7 @@
 @import 'weddings';
 @import 'masterflowers';
 @import 'recipes';
+@import 'carts';
 
 .navbar-nav {
   width: 100%;
@@ -51,7 +52,7 @@ body {
 }
 
 .btn {
-  border-radius: 1px!important;
+  border-radius: .25rem!important;
 }
 
 input, textarea {
@@ -63,7 +64,21 @@ input, textarea {
   padding: 4px 9px;
 }
 
+.text-field {
+  margin-right: 10px;
+  border: 1px solid #ced4da !important;
+  border-radius: .25rem;
+  box-shadow: none!important;
+  padding-left: 5px;
+}
 
 #q, #d {
   font-family: monospace;
+}
+
+// Accordion fix
+
+.accordion .card:only-of-type {
+	border-radius: .25rem;
+	border: 1px solid rgba(0,0,0,.125);
 }
