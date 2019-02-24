@@ -179,7 +179,7 @@ class WeddingsController < ApplicationController
 
     def find_name(flower_name)
       @masterflowers = Masterflower.all
-      @masterflowers.where("masterflower_name = '#{flower_name}'")
+      @masterflowers.where("masterflower_name ilike '#{flower_name}'")
     end
 
 end
