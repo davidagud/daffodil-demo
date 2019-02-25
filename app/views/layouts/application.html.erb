@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item">
           <% if @current_user %>
-            <%= link_to @current_user.username.upcase, logout_path, class: 'nav-link' %>
+            <%= link_to @current_user.username.upcase, logout_path, { data: { confirm: "Are you sure you want to logout?"}, class: 'nav-link' %>
           <% else %>
           <% end %>
         </li>
