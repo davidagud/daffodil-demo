@@ -1,5 +1,10 @@
 <% @users.each do |user| %>
-  <%= link_to user.username, edit_user_path(user) %>
+  <div class="row justify-content-center">
+    <%= link_to user.username, edit_user_path(user) %>
+  </div>
 <% end %>
 
-<%= link_to "New User", new_user_path %>
+
+<div class="row justify-content-center">
+  <%= link_to "New User", new_user_path %>
+</div>
