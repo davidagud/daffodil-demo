@@ -64,6 +64,7 @@ group :development do
   gem 'letter_opener_web', '~> 1.0'
   # Set environment variables
   gem 'figaro'
+  gem 'brakeman'
 end
 
 group :test do

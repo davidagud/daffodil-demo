@@ -1,35 +1,36 @@
 class WeddingsController < ApplicationController
   before_action :require_user
-  
+
   def index
     @weddings = Wedding.all.filter(false).order('wedding_date ASC')
 
-    if params[:q] || params[:d] || params[:v] || params[:h]
-      search_term = params[:q]
+    if params[:n] || params[:d] || params[:c] || params[:s]
+      # name search = params[:n]
+      # date search = params[:d]
+      # completed? search = params[:c]
+      # sort = params[:c]
       if params[:d].blank?
-        search_date = ''
+        params[:d] = ''
       else
-        search_date = params[:d]
+        params[:d] = params[:d]
       end
-      status = params[:v]
-      sort = params[:h]
-        if search_term.blank?
-          @weddings = Wedding.date_search(search_date).filter(status).order(sort)
+        if params[:n].blank?
+          @weddings = Wedding.date_search(params[:d]).filter(params[:c]).order(params[:s])
           if status.blank?
-            @weddings = Wedding.date_search(search_date).order(sort)
+            @weddings = Wedding.date_search(params[:d]).order(params[:s])
           end
-        elsif search_date.blank?
-          @weddings = Wedding.search(search_term).filter(status).order(sort)
-          if status.blank?
-            @weddings = Wedding.search(search_term).order(sort)
+        elsif params[:d].blank?
+          @weddings = Wedding.search(params[:n]).filter(params[:c]).order(params[:s])
+          if params[:c].blank?
+            @weddings = Wedding.search(params[:n]).order(params[:s])
           end
-        elsif search_term.blank? && search_date.blank?
-          @weddings = Wedding.filter(status).order(sort)
-          if status.blank?
-            @weddings = Wedding.order(sort)
+        elsif params[:n].blank? && params[:d].blank?
+          @weddings = Wedding.filter(params[:c]).order(params[:s])
+          if params[:c].blank?
+            @weddings = Wedding.order(params[:s])
           end
         else
-          @weddings = Wedding.search(search_term).date_search(search_date).filter(status).order(sort)
+          @weddings = Wedding.search(params[:n]).date_search(params[:d]).filter(params[:c]).order(params[:s])
         end
       if @weddings.blank?
         flash.now[:info] = "Sorry, no weddings match your search"
@@ -181,7 +182,7 @@ class WeddingsController < ApplicationController
 
     def find_name(flower_name)
       @masterflowers = Masterflower.all
-      @masterflowers.where("masterflower_name ilike '#{flower_name}'")
+      @masterflowers.where("masterflower_name ilike ?", "#{flower_name}")
     end
 
 end

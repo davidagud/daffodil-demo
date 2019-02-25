@@ -5,12 +5,12 @@ class CartsController < ApplicationController
     @order = Order.all
     @order_items = current_order.order_items
 
-    wedding_names = []
-    @order_items.each do |item| wedding_names.push(item.wedding.wedding_name) end
+    wedding_dates = []
+    @order_items.each do |item| wedding_dates.push(item.wedding.wedding_date) end
 
     respond_to do |format|
       format.html
-      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + wedding_names.join(' & ') + '.xlsx' }
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + wedding_dates.sort.first.to_s + '.xlsx' }
     end
   end
 end
