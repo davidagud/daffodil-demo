@@ -23,6 +23,15 @@
         <li class="nav-item">
           <%= link_to 'FLOWERS', masterflowers_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'USERS', users_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <% if @current_user %>
+            <%= link_to @current_user.username.upcase, logout_path, class: 'nav-link' %>
+          <% else %>
+          <% end %>
+        </li>
         <li class="nav-item cart-text">
           <%= render 'layouts/cart_text' %>
         </li>

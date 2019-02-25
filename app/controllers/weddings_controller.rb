@@ -1,4 +1,6 @@
 class WeddingsController < ApplicationController
+  before_action :require_user
+  
   def index
     @weddings = Wedding.all.filter(false).order('wedding_date ASC')
 

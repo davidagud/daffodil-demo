@@ -1,0 +1,15 @@
+<%= form_for @user do |form| %>
+  <p>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </p>
+
+  <p>
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </p>
+
+  <p id="submit-button">
+    <%= form.submit class: "btn btn-secondary" %>
+  </p>
+<% end %>

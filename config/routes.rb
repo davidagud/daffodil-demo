@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
   get 'carts/show'
   get 'list/index'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
   post 'weddings/update_all'
   post 'weddings/update_all_weddings'
   post 'weddings/copy_wedding'
@@ -17,11 +20,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users
   resources :masterflowers
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  root 'weddings#index'
+  root 'sessions#new'
 end

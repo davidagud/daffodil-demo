@@ -1,4 +1,5 @@
 class FlowersController < ApplicationController
+  before_action :require_user
 
   def index
     @wedding = Wedding.find(params[:wedding_id])
