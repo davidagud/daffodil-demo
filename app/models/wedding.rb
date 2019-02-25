@@ -5,7 +5,7 @@ class Wedding < ApplicationRecord
   has_many :hard_goods, through: :recipes, :dependent => :destroy
 
   def self.filter(status)
-    Wedding.where("completed = #{status}")
+    Wedding.where("completed = ?", status)
   end
 
   def self.search(search_term)

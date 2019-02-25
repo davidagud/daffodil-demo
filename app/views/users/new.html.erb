@@ -1,15 +1,21 @@
-<%= form_for @user do |form| %>
-  <p>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </p>
+<div class="col-sm-6">
+  <%= form_for @user do |form| %>
+    <p>
+      <%= form.label :username %>
+      <%= form.text_field :username %>
+    </p>
 
-  <p>
-    <%= form.label :password %>
-    <%= form.text_field :password %>
-  </p>
+    <p>
+      <%= form.label :password %>
+      <%= form.text_field :password %>
+    </p>
 
-  <p id="submit-button">
-    <%= form.submit class: "btn btn-secondary" %>
-  </p>
-<% end %>
+    <p>
+      Password must be at least 8 characters long with 1 capital and 1 number.
+    </p>
+
+    <p id="submit-button">
+      <%= form.submit class: "btn btn-secondary" %>
+    </p>
+  <% end %>
+</div>

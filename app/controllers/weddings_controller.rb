@@ -4,33 +4,35 @@ class WeddingsController < ApplicationController
   def index
     @weddings = Wedding.all.filter(false).order('wedding_date ASC')
 
+    options_for_sort = {"Furthest" => "wedding_date DESC", "Soonest" => "wedding_date ASC", "Newest" => "created_at DESC", "Oldest" => "created_at ASC", "A-Z" => "wedding_name ASC", "Z-A" => "wedding_name DESC"}
+
     if params[:n] || params[:d] || params[:c] || params[:s]
       # name search = params[:n]
       # date search = params[:d]
       # completed? search = params[:c]
-      # sort = params[:c]
+      # sort = params[:s]
       if params[:d].blank?
         params[:d] = ''
       else
         params[:d] = params[:d]
       end
         if params[:n].blank?
-          @weddings = Wedding.date_search(params[:d]).filter(params[:c]).order(params[:s])
-          if status.blank?
-            @weddings = Wedding.date_search(params[:d]).order(params[:s])
+          @weddings = Wedding.date_search(params[:d]).filter(params[:c]).order(options_for_sort[params[:s]])
+          if params[:c].blank?
+            @weddings = Wedding.date_search(params[:d]).order(options_for_sort[params[:s]])
           end
         elsif params[:d].blank?
-          @weddings = Wedding.search(params[:n]).filter(params[:c]).order(params[:s])
+          @weddings = Wedding.search(params[:n]).filter(params[:c]).order(options_for_sort[params[:s]])
           if params[:c].blank?
-            @weddings = Wedding.search(params[:n]).order(params[:s])
+            @weddings = Wedding.search(params[:n]).order(options_for_sort[params[:s]])
           end
         elsif params[:n].blank? && params[:d].blank?
-          @weddings = Wedding.filter(params[:c]).order(params[:s])
+          @weddings = Wedding.filter(params[:c]).order(options_for_sort[params[:s]])
           if params[:c].blank?
-            @weddings = Wedding.order(params[:s])
+            @weddings = Wedding.order(options_for_sort[params[:s]])
           end
         else
-          @weddings = Wedding.search(params[:n]).date_search(params[:d]).filter(params[:c]).order(params[:s])
+          @weddings = Wedding.search(params[:n]).date_search(params[:d]).filter(params[:c]).order(options_for_sort[params[:s]])
         end
       if @weddings.blank?
         flash.now[:info] = "Sorry, no weddings match your search"

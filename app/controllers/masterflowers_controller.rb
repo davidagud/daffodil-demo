@@ -4,10 +4,12 @@ class MasterflowersController < ApplicationController
   def index
     @masterflowers = Masterflower.all
 
+    options_for_sort = { "newest" => "created_at DESC", "oldest" => "created_at ASC", "a-z" => "masterflower_name ASC", "z-a" => "masterflower_name DESC", "highest price" => "masterflower_price DESC", "lowest price" => "masterflower_price ASC" }
+
     if params[:r] && params[:t]
-      search_term = params[:r]
-      sort = params[:t]
-        @masterflowers = Masterflower.search(search_term).order(sort)
+      # name search = params[:r]
+      # sort = params[:t]
+        @masterflowers = Masterflower.search(params[:r]).order(options_for_sort[params[:t]])
       if @masterflowers.blank?
         flash.now[:alert] = "Sorry, no flowers match your search"
         @masterflowers = Masterflower.all

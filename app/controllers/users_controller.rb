@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user.save
 
     if @user.errors.any?
-      flash[:danger] = "The name '" + @user.username.capitalize + "' has been taken or password is empty."
+      flash[:danger] = "The name '" + @user.username.capitalize + "' has been taken or password does not meet requirements."
       redirect_to new_user_path
     else
       session[:user_id] = @user.id
