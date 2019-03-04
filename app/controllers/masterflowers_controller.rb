@@ -31,9 +31,10 @@ class MasterflowersController < ApplicationController
 
   def create
     @masterflower = Masterflower.new(masterflower_params)
-    @masterflower = Masterflower.update(:masterflower_price => masterflower_price*100)
 
     @masterflower.save
+
+    @masteflower.update(:masterflower_price => masterflower_price*100)
 
     if @masterflower.errors.any?
       flash[:danger] = "The name '" + @masterflower.masterflower_name.capitalize + "' has been taken or the price was empty."
@@ -65,6 +66,13 @@ class MasterflowersController < ApplicationController
   private
     def masterflower_params
       params.require(:masterflower).permit(:masterflower_name, :masterflower_price, :vendor)
+    end
+
+    def currency_multiply
+
+    end
+
+    def currency_divide
     end
 
 end
