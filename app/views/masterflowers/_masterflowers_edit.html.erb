@@ -7,7 +7,7 @@
 
   <p>
     <%= form.label :masterflower_price %>:
-    <%= form.text_field :masterflower_price, class: "text-field", :value => number_with_precision(@masterflower.masterflower_price / 100, precision: 2) %>
+    <%= form.text_field :masterflower_price, class: "text-field", :value => number_with_precision(@masterflower.masterflower_price.to_f / 100, precision: 2) %>
   </p>
 
   <p>
