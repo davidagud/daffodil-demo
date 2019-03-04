@@ -25,7 +25,7 @@
         </button>
 
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseHardGood<%= hard_good.id %>" aria-controls="HardGood<%= hard_good.hard_good_name %>">
-          <h5>Total: $<%= hard_good.hard_good_total_price %></h5>
+          <h5>Total: $<%= number_with_precision(hard_good.hard_good_total_price, precision: 2) %></h5>
         </button>
 
       </div>

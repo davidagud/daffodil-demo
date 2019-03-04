@@ -34,7 +34,7 @@
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= masterflower.id %>" aria-expanded="true" aria-controls="collapseOne">
               <h4 class="card-title">
                 <%= masterflower.masterflower_name %>
-                $<%= masterflower.masterflower_price %>
+                $<%= number_with_precision(masterflower.masterflower_price, precision: 2) %>
                 (<%= if masterflower.vendor? then masterflower.vendor else "Vendor" end %>)
               </h4>
             </button>

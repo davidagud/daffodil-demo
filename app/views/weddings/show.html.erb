@@ -36,21 +36,21 @@
       </h4>
 
       <h4 id="total-price">
-        Cost: $<%= @wedding.total_price %>
+        Cost: $<%= number_with_precision(@wedding.total_price, precision: 2) %>
       </h4>
 
       <% if recipe_retail_prices[0] == "Test" %>
 
       <% else %>
         <h4 id="profit">
-          Profit: $<%= recipe_retail_prices.to_f - @wedding.total_price %>
+          Profit: $<%= number_with_precision(recipe_retail_prices.to_f - @wedding.total_price, precision: 2) %>
         </h4>
 
         <h4 id="markup">
           <% if (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).nan? || (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).infinite? then %>
 
           <% else %>
-            Markup: <%= (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100) %>%
+            Markup: <%= (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).to_i %>%
           <% end %>
         </h4>
       <% end %>

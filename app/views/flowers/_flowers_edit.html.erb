@@ -13,7 +13,7 @@
 <% end %>
 
 <p>
-  <span>Flower Price: </span>$<%= @flower.flower_price %>
+  <span>Flower Price: </span>$<%= number_with_precision(@flower.flower_price, precision: 2) %>
 </p>
 <p>
   <span>Flower Vendor: </span><%= @flower.flower_vendor %>

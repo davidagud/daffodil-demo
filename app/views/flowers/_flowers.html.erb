@@ -25,7 +25,7 @@
         </button>
 
         <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
-          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>">Total: $<%= flower.flower_total_price %></h5>
+          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>">Total: $<%= number_with_precision(flower.flower_total_price, precision: 2 ) %></h5>
         </button>
 
       </div>
