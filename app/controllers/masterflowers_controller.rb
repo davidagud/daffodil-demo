@@ -34,7 +34,7 @@ class MasterflowersController < ApplicationController
 
     @masterflower.save
 
-    @masteflower.update(:masterflower_price => masterflower_price*100)
+    @masteflower.update(:masterflower_price => :masterflower_price*100)
 
     if @masterflower.errors.any?
       flash[:danger] = "The name '" + @masterflower.masterflower_name.capitalize + "' has been taken or the price was empty."
