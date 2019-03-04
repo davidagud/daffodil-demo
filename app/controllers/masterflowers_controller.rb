@@ -50,7 +50,6 @@ class MasterflowersController < ApplicationController
       flash[:danger] = "The price of '" + @masterflower.masterflower_name.capitalize + "'  cannot be empty."
       redirect_to masterflowers_path
     else
-      @masteflower.multiply_currency
       redirect_to masterflowers_path
     end
   end
