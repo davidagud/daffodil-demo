@@ -30,7 +30,7 @@
         <% if recipe_retail_prices[0] == "Test" %>
           Check Recipe Retail Prices
         <% else %>
-          <% recipe_retail_prices = recipe_retail_prices.sum %>
+          <% recipe_retail_prices = number_with_precision(recipe_retail_prices.sum, precision: 2) %>
           $<%= recipe_retail_prices %>
         <% end %>
       </h4>
@@ -39,12 +39,12 @@
         Cost: $<%= @wedding.total_price %>
       </h4>
 
-      <#% if recipe_retail_prices[0] == "Test" %>
+      <% if recipe_retail_prices[0] == "Test" %>
 
       <% else %>
         <h4 id="profit">
           Profit: $<%= recipe_retail_prices.to_i - @wedding.total_price %>
-        </4>
+        </h4>
 
         <h4 id="markup">
           <% if (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).nan? || (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).infinite? then %>
