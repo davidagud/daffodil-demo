@@ -1,6 +1,7 @@
 class Masterflower < ApplicationRecord
   validates_uniqueness_of :masterflower_name, :case_sensitive => false
   validates :masterflower_price, presence: true
+  before_save { self.masterflower_price = masterflower_price*100 }
 
   def self.search(search_term)
     Masterflower.where("masterflower_name ilike ?", "%#{search_term}%")
@@ -16,11 +17,6 @@ class Masterflower < ApplicationRecord
     @masterflowers = Masterflower.all
     masterflower_id = @masterflowers.where("masterflower_name ilike ?", "#{flower_vendor}").first.id
     @masterflowers.find(masterflower_id).vendor
-  end
-
-  def self.multiply_currency
-    @masterflower = Masterflower.find(:id)
-    @masterflower.masterflower_price = @masteflower.masterflower_price * 100
   end
 
 end
