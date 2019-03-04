@@ -71,7 +71,7 @@ class MasterflowersController < ApplicationController
     end
 
     def currency_multiply
-      @masterflower.masterflower_price = @masterflower.masterflower_price * 100
+      masterflower_price = masterflower_price * 100
     end
 
     def currency_divide
