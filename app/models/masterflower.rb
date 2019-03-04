@@ -18,4 +18,9 @@ class Masterflower < ApplicationRecord
     @masterflowers.find(masterflower_id).vendor
   end
 
+  def self.multiply_currency
+    @masterflower = Masterflower.find(:id)
+    @masterflower.masterflower_price = @masteflower.masterflower_price * 100
+  end
+
 end

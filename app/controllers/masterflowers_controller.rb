@@ -34,10 +34,6 @@ class MasterflowersController < ApplicationController
 
     @masterflower.save
 
-    @masteflower.currency_multiply
-
-    @masterflower.save
-
     if @masterflower.errors.any?
       flash[:danger] = "The name '" + @masterflower.masterflower_name.capitalize + "' has been taken or the price was empty."
       redirect_to masterflowers_path
@@ -54,6 +50,7 @@ class MasterflowersController < ApplicationController
       flash[:danger] = "The price of '" + @masterflower.masterflower_name.capitalize + "'  cannot be empty."
       redirect_to masterflowers_path
     else
+      @masteflower.multiply_currency
       redirect_to masterflowers_path
     end
   end
@@ -68,13 +65,6 @@ class MasterflowersController < ApplicationController
   private
     def masterflower_params
       params.require(:masterflower).permit(:masterflower_name, :masterflower_price, :vendor)
-    end
-
-    def currency_multiply
-      masterflower_price = masterflower_price * 100
-    end
-
-    def currency_divide
     end
 
 end
