@@ -31,6 +31,7 @@ class MasterflowersController < ApplicationController
 
   def create
     @masterflower = Masterflower.new(masterflower_params)
+    @masterflower = Masterflower.update(:masterflower_price => :masterflower_price*100)
 
     @masterflower.save
 
@@ -63,7 +64,7 @@ class MasterflowersController < ApplicationController
 
   private
     def masterflower_params
-      params.require(:masterflower).permit(:masterflower_name, :masterflower_price * 100, :vendor)
+      params.require(:masterflower).permit(:masterflower_name, :masterflower_price, :vendor)
     end
 
 end
