@@ -43,14 +43,14 @@
 
       <% else %>
         <h4 id="profit">
-          Profit: $<%= recipe_retail_prices.to_i %>  - @wedding.total_price
+          Profit: $<%= recipe_retail_prices.to_f - @wedding.total_price %>
         </h4>
 
         <h4 id="markup">
-          <% if (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).nan? || (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).infinite? then %>
+          <% if (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).nan? || (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).infinite? then %>
 
           <% else %>
-            Markup: <%= (((recipe_retail_prices.to_i - @wedding.total_price) / @wedding.total_price.to_f) * 100).to_i %>%
+            Markup: <%= (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100) %>%
           <% end %>
         </h4>
       <% end %>
