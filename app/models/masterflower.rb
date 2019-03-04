@@ -1,7 +1,6 @@
 class Masterflower < ApplicationRecord
   validates_uniqueness_of :masterflower_name, :case_sensitive => false
   validates :masterflower_price, presence: true
-  before_save { self.masterflower_price = number_with_precision(masterflower_price)*100 }
 
   def self.search(search_term)
     Masterflower.where("masterflower_name ilike ?", "%#{search_term}%")
