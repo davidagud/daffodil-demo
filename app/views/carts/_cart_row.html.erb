@@ -1,7 +1,7 @@
 <div class="row justify-content-between align-items-center">
   <div class="row">
     <div id="wedding-name"><%= link_to wedding.wedding_name, wedding_path(wedding), id: "wedding-name" %></div>
-    <a class="align-self-center circle-plus-<%= wedding.wedding_name %> closed" data-toggle="collapse" href="#collapse<%= wedding.wedding_name %>Flowers" role="button" aria-expand="false" aria-controls="collapse<%= wedding.wedding_name %>Flowers">
+    <a class="align-self-center circle-plus-<%= wedding.wedding_name.delete(" ") %> closed" data-toggle="collapse" href="#collapse<%= wedding.wedding_name.delete(" ") %>Flowers" role="button" aria-expand="false" aria-controls="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
       <div class="circle">
         <div class="horizontal fas fa-minus"></div>
         <div class="vertical fas fa-minus"></div>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div class="collapse" id="collapse<%= wedding.wedding_name %>Flowers">
+<div class="collapse" id="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
   <div class="card card-body">
     <strong>Flowers:</strong>
     <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
@@ -39,7 +39,7 @@
 
 
 <script>
-  $('.circle-plus-<%= wedding.wedding_name %>').on('click', function(){
+  $('.circle-plus-<%= wedding.wedding_name.delete(" ") %>').on('click', function(){
     $(this).toggleClass('opened');
   })
 </script>
