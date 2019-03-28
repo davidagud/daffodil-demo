@@ -20,18 +20,17 @@
   <div class="card card-body">
     <strong>Flowers:</strong>
 
-    <% wedding.flowers.each do |wedflower| %>
-      <% flower_arr = [] %>
-      <% wedflower.recipe.all.each do | wedrecipe | 	%>
-      	<% flower_arr.push(wedrecipe.wedflower.quantity * wedrecipe.quantity) %>
-	    <% end %>
-
-      <div class="row">
-        		<div id="flower-row"><%= wedflower.flower_name %>:</div>
-        		<div id="flower-row"><%= flower_arr.sum %></div></br>
-      </div>
-
+    <% weddingarray = [] %>
+    <% wedding.recipes.each do |recipe| %>
+      <% recipe.flowers.each do |flower| %>
+        <% weddingarray.push({flower.name => flower.quantity * recipe.recipe_quantity}) %>
+      <% end %>
     <% end %>
+
+    <% weddingarray.inject{|a,b| a.merge(b){|_,x,y| x + y}} %>
+
+    <% weddingarray %>
+
 
     <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
       <hr>
