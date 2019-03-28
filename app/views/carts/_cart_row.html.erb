@@ -58,7 +58,7 @@
       <% hash.each { |key, value| sum[key] += value } %>
     <% end %>
 
-    <% sortedhardgoodssum = hardgoodssum.sort!{|a,b| a[0] <=> b[0] } %>
+    <% sortedhardgoodssum = hardgoodssum.sort{|a,b| a[0] <=> b[0] } %>
 
     <% sortedhardgoodssum.each do |hardgoodname, hardgoodsumquantity| %>
       <hr>
