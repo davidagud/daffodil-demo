@@ -22,7 +22,7 @@
 
     <% wedding.flowers.each do |wedflower| %>
       <% flower_arr = [] %>
-      <% wedflower.recipes.each do | wedrecipe | 	%>
+      <% wedflower.recipe.each do | wedrecipe | 	%>
       	<% flower_arr.push(wedrecipe.wedflower.quantity * wedrecipe.quantity) %>
 	    <% end %>
 
