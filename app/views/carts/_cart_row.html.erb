@@ -27,9 +27,13 @@
       <% end %>
     <% end %>
 
-    
+    <% weddingsum = Hash.new(0) %>
 
-    <%= weddingarray %>
+    <% weddingarray.each_with_object(sum) do |hash, sum| %>
+      <% hash.each { |key, value| sum[key] += value } %>
+    <% end %>
+
+    <%= weddingsum %>
 
 
     <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
