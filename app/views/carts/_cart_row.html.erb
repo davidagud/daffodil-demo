@@ -19,7 +19,21 @@
 <div class="collapse" id="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
   <div class="card card-body">
     <strong>Flowers:</strong>
-    <% wedding.flowers.group(:flower_name).sum(:quantity * :flower.recipe_quantity).each do |flower_name, sum| %>
+
+    <% wedding.flowers.each do |wed-flower| %>
+      <% flower_arr = [] %>
+      <% wed-flower.recipes.each do | recipe | 	%>
+      	<% flower_arr.push(recipe.wed-flower.quantity * recipe.quantity) %>
+	    <% end %>
+
+      <div class="row">
+        		<div id="flower-row"><%= wed-flower.flower_name %>:</div>
+        		<div id="flower-row"><%= flower_arr.sum %></div></br>
+      </div>
+
+    <% end %>
+
+    <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
       <hr>
       <div class="row">
         <div id="flower-row"><%= flower_name %>:</div>
