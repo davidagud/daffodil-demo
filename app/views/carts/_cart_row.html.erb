@@ -35,7 +35,7 @@
 
     <% flowerssum.sort!{|a,b| a[0] <=> b[0] } %>
 
-    <% sortedflowerssum.each do |flowername, flowersumquantity| %>
+    <% flowerssum.each do |flowername, flowersumquantity| %>
       <hr>
       <div class="row">
         <div id="flower-row"><%= flowername %>:</div>
@@ -57,6 +57,8 @@
     <% weddingarrayhardgoods.each_with_object(hardgoodssum) do |hash, sum| %>
       <% hash.each { |key, value| sum[key] += value } %>
     <% end %>
+
+    <% hardgoodssum.sort!{|a,b| a[0] <=> b[0] } %>
 
     <% hardgoodssum.each do |hardgoodname, hardgoodsumquantity| %>
       <hr>
