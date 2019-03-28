@@ -29,7 +29,7 @@
 
     <% weddingarray.inject{|a,b| a.merge(b){|_,x,y| x + y}} %>
 
-    <% weddingarray %>
+    <%= weddingarray %>
 
 
     <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
