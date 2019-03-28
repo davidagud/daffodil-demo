@@ -27,7 +27,7 @@
       <% end %>
     <% end %>
 
-    <% weddingsum = Hash.new(0) %>
+    <% sum = Hash.new(0) %>
 
     <% weddingarray.each_with_object(sum) do |hash, sum| %>
       <% hash.each { |key, value| sum[key] += value } %>
