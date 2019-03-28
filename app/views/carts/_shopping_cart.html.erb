@@ -43,10 +43,9 @@
         <% end %>
 
         <% cartflowerssum.each do |flowername, flowersumquantity| %>
-          <hr>
-          <div class="row">
-            <div id="flower-row"><%= flowername %>:</div>
-            <div id="flower-row"><%= flowersumquantity %></div></br>
+          <div class="row justify-content-between name-sums">
+            <div class="col-sm-9"><%= flowername %>:</div><div class="col-sm-1" id="sum"><%= flowersumquantity %></div></br>
+          </br>
           </div>
         <% end %>
 
