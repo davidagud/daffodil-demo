@@ -28,6 +28,28 @@
     <div class="col-sm-3 cart-sidebar">
       <h2 id="cart-total">Cart Total</h2>
       <div>
+
+        <% cartarrayflowers = [] %>
+        <% current_order.recipes.each do |recipe| %>
+          <% recipe.flowers.each do |flower| %>
+            <% cartarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+          <% end %>
+        <% end %>
+
+        <% cartflowerssum = Hash.new(0) %>
+
+        <% cartarrayflowers.each_with_object(cartflowerssum) do |hash, sum| %>
+          <% hash.each { |key, value| sum[key] += value } %>
+        <% end %>
+
+        <% cartflowerssum.each do |flowername, flowersumquantity| %>
+          <hr>
+          <div class="row">
+            <div id="flower-row"><%= flowername %>:</div>
+            <div id="flower-row"><%= flowersumquantity %></div></br>
+          </div>
+        <% end %>
+
         <% current_order.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
           <div class="row justify-content-between name-sums">
             <div class="col-sm-9"><%= flower_name %>:</div><div class="col-sm-1" id="sum"><%= sum %></div></br>
