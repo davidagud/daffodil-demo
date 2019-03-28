@@ -33,7 +33,7 @@
       <% hash.each { |key, value| sum[key] += value } %>
     <% end %>
 
-    <% sortedflowersum = flowerssum.sort_by{|flower| flower["name"] } %>
+    <% sortedflowersum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
 
     <% sortedflowerssum.each do |flowername, flowersumquantity| %>
       <hr>
