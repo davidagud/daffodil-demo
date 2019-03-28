@@ -92,7 +92,7 @@ wb.add_worksheet(name: "Hard Goods") do |sheet|
     hash.each { |key, value| sum[key] += value }
   end
 
-  sortedcarthardgoodssum = cartflowerssum.sort{|a,b| a[0] <=> b[0] }
+  sortedcarthardgoodssum = carthardgoodssum.sort{|a,b| a[0] <=> b[0] }
 
   sortedcarthardgoodssum.each do |hardgoodname, hardgoodsumquantity|
     sheet.add_row [hardgoodname, hardgoodsumquantity]
