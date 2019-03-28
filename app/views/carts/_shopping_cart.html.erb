@@ -42,7 +42,9 @@
           <% hash.each { |key, value| sum[key] += value } %>
         <% end %>
 
-        <% cartflowerssum.each do |flowername, flowersumquantity| %>
+        <% sortedcartflowerssum = cartflowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+        <% sortedcartflowerssum.each do |flowername, flowersumquantity| %>
           <div class="row justify-content-between name-sums">
             <div class="col-sm-9"><%= flowername %>:</div><div class="col-sm-1" id="sum"><%= flowersumquantity %></div></br>
           </br>
