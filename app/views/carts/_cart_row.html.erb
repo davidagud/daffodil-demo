@@ -20,14 +20,14 @@
   <div class="card card-body">
     <strong>Flowers:</strong>
 
-    <% wedding.flowers.each do |wed-flower| %>
+    <% wedding.flowers.each do |wedflower| %>
       <% flower_arr = [] %>
-      <% wed-flower.recipes.each do | recipe | 	%>
-      	<% flower_arr.push(recipe.wed-flower.quantity * recipe.quantity) %>
+      <% wedflower.recipes.each do | wedrecipe | 	%>
+      	<% flower_arr.push(wedrecipe.wedflower.quantity * wedrecipe.quantity) %>
 	    <% end %>
 
       <div class="row">
-        		<div id="flower-row"><%= wed-flower.flower_name %>:</div>
+        		<div id="flower-row"><%= wedflower.flower_name %>:</div>
         		<div id="flower-row"><%= flower_arr.sum %></div></br>
       </div>
 
