@@ -33,8 +33,13 @@
       <% hash.each { |key, value| sum[key] += value } %>
     <% end %>
 
-    <%= sum %>
-
+    <% sum.each do |a,b| %>
+      <hr>
+      <div class="row">
+        <div id="flower-row"><%= a %>:</div>
+        <div id="flower-row"><%= b %></div></br>
+      </div>
+    <% end %>
 
     <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
       <hr>
