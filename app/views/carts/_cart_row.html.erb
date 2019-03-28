@@ -63,15 +63,6 @@
         <div id="flower-row"><%= hardgoodsumquantity %></div></br>
       </div>
     <% end %>
-
-
-    <% wedding.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum| %>
-      <hr>
-      <div class="row">
-        <div id="flower-row"><%= hard_good_name %>:</div>
-        <div id="flower-row"><%= sum %></div></br>
-      </div>
-    <% end %>
   </div>
 </div>
 
