@@ -46,7 +46,7 @@
     <% weddingarrayhardgoods = [] %>
     <% wedding.recipes.each do |recipe| %>
       <% recipe.hard_goods.each do |hard_good| %>
-        <% weddingarrayhardgoods.push({hard_good.hard_good_name => hard_good_quantity.quantity * recipe.recipe_quantity}) %>
+        <% weddingarrayhardgoods.push({hard_good.hard_good_name => hard_good.hard_good_quantity * recipe.recipe_quantity}) %>
       <% end %>
     <% end %>
 
