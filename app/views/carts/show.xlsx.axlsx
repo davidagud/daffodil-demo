@@ -7,6 +7,24 @@ wb.add_worksheet(name: "Weddings") do |sheet|
 
   sheet.add_row [wedding.wedding_name.upcase]
 
+  weddingarrayflowers = []
+  wedding.recipes.each do |recipe|
+    recipe.flowers.each do |flower|
+      weddingarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity})
+    end
+  end
+
+  flowerssum = Hash.new(0)
+
+  weddingarrayflowers.each_with_object(flowerssum) do |hash, sum|
+    hash.each { |key, value| sum[key] += value }
+  end
+
+  flowerssum.each do |flowername, flowersumquantity|
+    sheet.add_row [flowername, flowersumquantity]
+  end
+
+
     wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum|
       sheet.add_row [flower_name, sum]
     end
