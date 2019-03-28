@@ -20,7 +20,10 @@ wb.add_worksheet(name: "Weddings") do |sheet|
     hash.each { |key, value| sum[key] += value }
   end
 
-  flowerssum.each do |flowername, flowersumquantity|
+  sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] }
+
+
+  sortedflowerssum.each do |flowername, flowersumquantity|
     sheet.add_row [flowername, flowersumquantity]
   end
 
@@ -39,7 +42,9 @@ wb.add_worksheet(name: "Weddings") do |sheet|
     hash.each { |key, value| sum[key] += value }
   end
 
-  hardgoodssum.each do |hardgoodname, hardgoodsumquantity|
+  sortedhardgoodssum = hardgoodssum.sort{|a,b| a[0] <=> b[0] }
+
+  sortedhardgoodssum.each do |hardgoodname, hardgoodsumquantity|
     sheet.add_row [hardgoodname, hardgoodsumquantity]
   end
 
@@ -64,7 +69,9 @@ wb.add_worksheet(name: "Flowers") do |sheet|
     hash.each { |key, value| sum[key] += value }
   end
 
-  cartflowerssum.each do |flowername, flowersumquantity|
+  sortedcartflowerssum = cartflowerssum.sort{|a,b| a[0] <=> b[0] }
+
+  sortedcartflowerssum.each do |flowername, flowersumquantity|
     sheet.add_row [flowername, flowersumquantity]
   end
 end
@@ -85,7 +92,9 @@ wb.add_worksheet(name: "Hard Goods") do |sheet|
     hash.each { |key, value| sum[key] += value }
   end
 
-  carthardgoodssum.each do |hardgoodname, hardgoodsumquantity|
+  sortedcarthardgoodssum = cartflowerssum.sort{|a,b| a[0] <=> b[0] }
+
+  sortedcarthardgoodssum.each do |hardgoodname, hardgoodsumquantity|
     sheet.add_row [hardgoodname, hardgoodsumquantity]
   end
 end
