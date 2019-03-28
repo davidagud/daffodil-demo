@@ -20,35 +20,51 @@
   <div class="card card-body">
     <strong>Flowers:</strong>
 
-    <% weddingarray = [] %>
+    <% weddingarrayflowers = [] %>
     <% wedding.recipes.each do |recipe| %>
       <% recipe.flowers.each do |flower| %>
-        <% weddingarray.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+        <% weddingarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
       <% end %>
     <% end %>
 
-    <% sum = Hash.new(0) %>
+    <% flowerssum = Hash.new(0) %>
 
-    <% weddingarray.each_with_object(sum) do |hash, sum| %>
+    <% weddingarrayflowers.each_with_object(flowerssum) do |hash, sum| %>
       <% hash.each { |key, value| sum[key] += value } %>
     <% end %>
 
-    <% sum.each do |a,b| %>
+    <% flowerssum.each do |flowername, flowersumquantity| %>
       <hr>
       <div class="row">
-        <div id="flower-row"><%= a %>:</div>
-        <div id="flower-row"><%= b %></div></br>
+        <div id="flower-row"><%= flowername %>:</div>
+        <div id="flower-row"><%= flowersumquantity %></div></br>
       </div>
     <% end %>
 
-    <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+    <strong>Hard Goods:</strong>
+
+    <% weddingarrayhardgoods = [] %>
+    <% wedding.recipes.each do |recipe| %>
+      <% recipe.hard_goods.each do |hard_good| %>
+        <% weddingarrayhardgoods.push({hard_good.hard_good_name => hard_good_quantity.quantity * recipe.recipe_quantity}) %>
+      <% end %>
+    <% end %>
+
+    <% hardgoodssum = Hash.new(0) %>
+
+    <% weddingarrayhardgoods.each_with_object(hardgoodssum) do |hash, sum| %>
+      <% hash.each { |key, value| sum[key] += value } %>
+    <% end %>
+
+    <% hardgoodssum.each do |hardgoodname, hardgoodsumquantity| %>
       <hr>
       <div class="row">
-        <div id="flower-row"><%= flower_name %>:</div>
-        <div id="flower-row"><%= sum %></div></br>
+        <div id="flower-row"><%= hardgoodname %>:</div>
+        <div id="flower-row"><%= hardgoodsumquantity %></div></br>
       </div>
-    <% end %></br>
-    <strong>Hard Goods:</strong>
+    <% end %>
+
+
     <% wedding.hard_goods.group(:hard_good_name).sum(:hard_good_quantity).each do |hard_good_name, sum| %>
       <hr>
       <div class="row">
