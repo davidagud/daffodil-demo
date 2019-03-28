@@ -19,7 +19,7 @@
 <div class="collapse" id="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
   <div class="card card-body">
     <strong>Flowers:</strong>
-    <% wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum| %>
+    <% wedding.flowers.group(:flower_name).sum(:quantity * :recipe_quantity).each do |flower_name, sum| %>
       <hr>
       <div class="row">
         <div id="flower-row"><%= flower_name %>:</div>
