@@ -55,6 +55,29 @@
         </h4>
       <% end %>
 
+      <% weddingarrayflowers = [] %>
+      <% wedding.recipes.each do |recipe| %>
+        <% recipe.flowers.each do |flower| %>
+          <% weddingarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+        <% end %>
+      <% end %>
+
+      <% flowerssum = Hash.new(0) %>
+
+      <% weddingarrayflowers.each_with_object(flowerssum) do |hash, sum| %>
+        <% hash.each { |key, value| sum[key] += value } %>
+      <% end %>
+
+      <% sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+      <% sortedflowerssum.each do |flowername, flowersumquantity| %>
+        <hr>
+        <div class="row">
+          <div id="flower-row"><%= flowername %>:</div>
+          <div id="flower-row"><%= flowersumquantity %></div></br>
+        </div>
+      <% end %>
+
       <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
         <div class="well">
           <%= render "edit" %>
