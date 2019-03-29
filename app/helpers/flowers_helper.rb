@@ -8,7 +8,11 @@ module FlowersHelper
       @masterflowers.each do |masterflower|
         masterflower_choices.push(masterflower.masterflower_name + " - " + masterflower.vendor)
       end
-      masterflower_choices
+
+      sortedmasterflower_choices = masterflower_choices.sort_by { |n| n }
+
+      sortedmasterflower_choices
+
   end
 
 end
