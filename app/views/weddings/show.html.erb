@@ -71,10 +71,10 @@
       <% sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
 
       <% sortedflowerssum.each do |flowername, flowersumquantity| %>
-        <hr>
+        <hr id="row-separator">
         <div class="row">
           <div id="flower-row" class="col-10"><%= flowername %>:</div>
-          <div id="flower-row" class="col-1"><%= flowersumquantity %></div></br>
+          <div id="flower-row-number" class="col-1"><%= flowersumquantity %></div></br>
         </div>
       <% end %>
 
