@@ -56,7 +56,7 @@
       <% end %>
 
       <% weddingarrayflowers = [] %>
-      <% wedding.recipes.each do |recipe| %>
+      <% @wedding.recipes.each do |recipe| %>
         <% recipe.flowers.each do |flower| %>
           <% weddingarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
         <% end %>
