@@ -130,10 +130,15 @@
   color: #545250;
 }
 
-#separator {
+#row-separator {
   width: 100%;
+  color: #545250;
+}
+
+#flower-row, #flower-row-number {
+  color: #545250;
 }
 
 #flower-row-number {
-  float: right;
+  text-align: right;
 }
