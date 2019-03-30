@@ -50,7 +50,7 @@
           <% if (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).nan? || (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).infinite? then %>
 
           <% else %>
-            Markup: <%= number_with_precision(recipe_retail_prices/@wedding.total_price, precision: 2) %>
+            Markup: <%= number_with_precision(recipe_retail_prices.to_f / @wedding.total_price, precision: 2) %>
             Markup: <%= (((recipe_retail_prices.to_f - @wedding.total_price) / @wedding.total_price) * 100).to_i %>%
           <% end %>
         </h4>
