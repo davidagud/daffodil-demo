@@ -146,6 +146,14 @@ class WeddingsController < ApplicationController
     redirect_to weddings_path
   end
 
+  def export_wedding
+    @wedding = Wedding.find(params[:wedding_id])
+
+    wedding_path(@wedding.id, format: "xlsx", method: :get)
+
+    redirect_to weddings_path
+  end
+
   def destroy
     @wedding = Wedding.find(params[:id])
 
