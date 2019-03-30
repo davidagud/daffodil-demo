@@ -92,7 +92,6 @@
         <%= button_to "Update All", weddings_update_all_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "update-button" %>
         <%= button_to "Copy", weddings_copy_wedding_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "copy-wedding-button" %>
         <%= button_to "Email", weddings_send_wedding_email_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "send-wedding-email-button" %>
-        <%= link_to "Export as spreadsheet", weddings_show_path(:wedding_id => @wedding.id, format: "xlsx"), class: "btn btn-secondary" %>
         <%= button_to "Export", weddings_export_wedding_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "send-wedding-email-button" %>
       </div>
     </div>
