@@ -31,9 +31,8 @@
                   Retail: Not Set, Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %>
                 <% else %>
                   Retail: $<%= number_with_precision(recipe.retail_price * recipe.recipe_quantity, precision: 2) %>,
-                  Hard Goods Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f * recipe.recipe_quantity, precision: 2)%>
-                  Floral Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f * recipe.recipe_quantity, precision: 2)%>
-                  Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %>,
+                  Hard Goods Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f * recipe.recipe_quantity, precision: 2)%>,
+                  Floral Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f * recipe.recipe_quantity, precision: 2)%>,
                   Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
                             <%= number_with_precision((recipe.retail_price* recipe.recipe_quantity)/recipe.recipe_total_price, precision: 2) %>
                           <% end %>
