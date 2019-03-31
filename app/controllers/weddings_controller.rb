@@ -149,7 +149,11 @@ class WeddingsController < ApplicationController
   def export_wedding
     @wedding = Wedding.find(params[:id])
 
-    wedding_path(:id => @wedding.id, format: "xlsx")
+    respond_to do |format|
+      wedding_name = @wedding.wedding_name
+      format.html
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
+    end
   end
 
   def destroy
