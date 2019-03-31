@@ -147,7 +147,7 @@ class WeddingsController < ApplicationController
   end
 
   def export_wedding
-    @wedding = Wedding.find(params[:wedding_id])
+    @wedding = Wedding.find(params[:id])
 
     wedding_path(:id => @wedding.id, format: "xlsx")
 
