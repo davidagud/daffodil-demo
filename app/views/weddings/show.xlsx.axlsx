@@ -3,6 +3,8 @@ wb = xlsx_package.workbook
 wb.add_worksheet(name: "Recipes") do |sheet|
   sheet.add_row %w(NAME QTY IND-COST TOT-COST RETAIL NOTES)
 
+  wedding = @wedding
+
   wedding.recipes.each do |recipe|
 
   sheet.add_row [recipe.recipe_name.upcase, recipe.recipe_quantity, recipe.recipe_total_price/recipe.recipe_quantity, recipe.recipe_total_price, recipe.retail_price * recipe.recipe_quantity, recipe.notes]

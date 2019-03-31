@@ -64,7 +64,6 @@ class WeddingsController < ApplicationController
     @wedding.update(:total_price => total_price)
 
     respond_to do |format|
-      wedding = @wedding
       format.html
       format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
     end
