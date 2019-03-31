@@ -151,8 +151,8 @@ class WeddingsController < ApplicationController
 
     respond_to do |format|
       wedding_name = @wedding.wedding_name
-      show.html
-      show.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
+      format.html
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
     end
   end
 
