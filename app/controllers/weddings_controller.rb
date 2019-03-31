@@ -150,6 +150,11 @@ class WeddingsController < ApplicationController
     @wedding = Wedding.find(params[:wedding_id])
 
     wedding_path(@wedding.id, format: "xlsx")
+
+    @wedding = Wedding.find(params[:wedding].id)
+
+    xlsx = render layout: false, handlers: [:axlsx], formats: [:xlsx], template: "weddings/show", locals: { :wedding => @wedding }
+
   end
 
   def destroy
