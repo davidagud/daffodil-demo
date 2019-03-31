@@ -148,6 +148,8 @@ class WeddingsController < ApplicationController
 
   def export_wedding
     respond_to do |format|
+      @wedding = Wedding.find(params[:wedding_id])
+
       wedding_name = @wedding.wedding_name
       format.html
       format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
