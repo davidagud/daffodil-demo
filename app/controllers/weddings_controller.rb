@@ -150,8 +150,6 @@ class WeddingsController < ApplicationController
     @wedding = Wedding.find(params[:wedding_id])
 
     wedding_path(@wedding.id, format: "xlsx")
-
-    redirect_to weddings_path
   end
 
   def destroy
