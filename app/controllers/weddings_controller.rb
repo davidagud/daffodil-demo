@@ -150,8 +150,6 @@ class WeddingsController < ApplicationController
     @wedding = Wedding.find(params[:id])
 
     wedding_path(:id => @wedding.id, format: "xlsx")
-
-    show.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
   end
 
   def destroy
