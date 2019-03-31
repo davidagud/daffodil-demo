@@ -64,7 +64,6 @@ class WeddingsController < ApplicationController
     @wedding.update(:total_price => total_price)
 
     respond_to do |format|
-      wedding_name = @wedding.wedding_name
       format.html
       format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename = ' + @wedding.wedding_name + '.xlsx' }
     end
@@ -144,14 +143,6 @@ class WeddingsController < ApplicationController
     WeddingMailer.with(wedding: @wedding).wedding_email.deliver_now
 
     redirect_to weddings_path
-  end
-
-  def export_wedding
-    @wedding = Wedding.find(params[:id])
-
-    wedding_path(@wedding.id, format: "xlsx", method: :get)
-
-    xlsx = render layout: false, handlers: [:axlsx], formats: [:xlsx], template: "weddings/show", locals: { :wedding => @wedding }
   end
 
   def destroy

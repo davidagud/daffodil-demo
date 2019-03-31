@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post 'weddings/update_all_weddings'
   post 'weddings/copy_wedding'
   post 'weddings/send_wedding_email'
-  post 'weddings/export_wedding'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :weddings do
