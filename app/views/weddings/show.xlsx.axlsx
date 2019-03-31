@@ -1,9 +1,10 @@
 wb = xlsx_package.workbook
 
+wedding = @wedding
+
+
 wb.add_worksheet(name: "Recipes") do |sheet|
   sheet.add_row %w(NAME QTY IND-COST TOT-COST RETAIL NOTES)
-
-  wedding = @wedding
 
   wedding.recipes.each do |recipe|
 
