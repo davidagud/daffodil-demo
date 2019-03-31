@@ -149,9 +149,7 @@ class WeddingsController < ApplicationController
   def export_wedding
     @wedding = Wedding.find(params[:id])
 
-    xlsx = render layout: false, handlers: [:axlsx], formats: [:xlsx], template: "weddings/show", locals: { :wedding => @wedding }
-    attachments[@wedding.wedding_name + '.xlsx'] = {mime_type: Mime[:xlsx], content: xlsx}
-
+    @wedding.wedding_name.xlsx = render layout: false, handlers: [:axlsx], formats: [:xlsx], template: "weddings/show", locals: { :wedding => @wedding }
   end
 
   def destroy
