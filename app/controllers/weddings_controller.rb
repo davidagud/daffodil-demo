@@ -149,7 +149,7 @@ class WeddingsController < ApplicationController
   def export_wedding
     @wedding = Wedding.find(params[:wedding_id])
 
-    wedding_path(@wedding.id, format: "xlsx", method: :post)
+    wedding_path(@wedding.id, format: "xlsx")
   end
 
   def destroy
