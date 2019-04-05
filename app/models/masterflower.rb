@@ -8,13 +8,13 @@ class Masterflower < ApplicationRecord
 
   def self.find_price(flowerprice)
     @masterflowers = Masterflower.all
-    masterflower_id = @masterflowers.where("masterflower_name + ' - ' + masterflower_vendor ilike ?", "#{flowerprice}").first.id
+    masterflower_id = @masterflowers.where("masterflower_name || ' - ' || masterflower_vendor ilike ?", "#{flowerprice}").first.id
     @masterflowers.find(masterflower_id).masterflower_price
   end
 
   def self.find_vendor(flower_vendor)
     @masterflowers = Masterflower.all
-    masterflower_id = @masterflowers.where("masterflower_name + ' - ' + mastflower_vendor ilike ?", "#{flower_vendor}").first.id
+    masterflower_id = @masterflowers.where("masterflower_name || ' - ' || ilike ?", "#{flower_vendor}").first.id
     @masterflowers.find(masterflower_id).vendor
   end
 
