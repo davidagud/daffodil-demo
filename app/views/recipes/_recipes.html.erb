@@ -20,7 +20,7 @@
     <div class="card">
       <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
         <div class="col-sm-11 recipe-header">
-          <h5 class="card-title"><%= link_to recipe.recipe_name (recipe.recipe_quantity), recipe_path(recipe), class: "btn btn-link" %></h5>
+          <h5 class="card-title"><%= link_to recipe.recipe_name (recipe.recipe_quantity), wedding_recipe_path(@recipe), class: "btn btn-link" %></h5>
 
           <div>
             <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
