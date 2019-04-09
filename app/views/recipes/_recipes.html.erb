@@ -21,7 +21,7 @@
       <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
         <div class="col-sm-11 recipe-header">
           <h5 class="card-title btn btn-link">
-            <%= link_to wedding_recipe_path(wedding, recipe) do %>
+            <%= link_to wedding_recipe_path(@wedding, @recipe) do %>
               <%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)
             <% end %>
           </h5>
