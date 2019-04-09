@@ -9,7 +9,6 @@ class RecipesController < ApplicationController
   def show
     @wedding = Wedding.find(params[:wedding_id])
     @recipe = @wedding.recipes.find(params[:id])
-    recipe = @recipe
   end
 
   def new
