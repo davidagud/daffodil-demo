@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
 
     @recipe.save!
 
-    redirect_to :back
+    redirect_back(fallback_location: wedding_path(@wedding))
   end
 
   def update
