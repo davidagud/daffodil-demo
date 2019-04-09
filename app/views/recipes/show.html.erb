@@ -32,10 +32,8 @@
       <% end %>
 
       <% recipearrayflowers = [] %>
-      <% @recipe.each do |recipe| %>
-        <% recipe.flowers.each do |flower| %>
-          <% recipearrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
-        <% end %>
+      <% recipe.flowers.each do |flower| %>
+        <% recipearrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
       <% end %>
 
       <% flowerssum = Hash.new(0) %>
