@@ -3,7 +3,10 @@
 <div class="container" id="wedding-frame">
   <div class="row">
     <div class="col-sm-4">
-      <h4 id="wedding-name"><%= @wedding.wedding_name %>'s</h4>
+      <%= link_to wedding_path(@wedding) do %>
+        <h4 id="wedding-name"><%= @wedding.wedding_name %>'s</h4>
+      <% end %>
+
       <h4>
         <a id="wedding-name" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= @recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
           <%= recipe.recipe_name %>
