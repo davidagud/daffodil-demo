@@ -34,7 +34,7 @@ class FlowersController < ApplicationController
     @flower.update(:flower_price => flower_price)
     @flower.update(:flower_vendor => flower_vendor)
     @flower.save!
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   def update
@@ -46,7 +46,7 @@ class FlowersController < ApplicationController
     @flower.update(:flower_price => flower_price)
     @flower.update(:flower_vendor => flower_vendor)
     @flower.update(flower_params)
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   def destroy
@@ -55,7 +55,7 @@ class FlowersController < ApplicationController
     @flower = @recipe.flowers.find(params[:id])
 
     @flower.destroy!
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   private

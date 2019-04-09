@@ -30,7 +30,7 @@ class HardGoodsController < ApplicationController
     @hard_good = @recipe.hard_goods.new(hard_good_params)
 
     @hard_good.save!
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   def update
@@ -39,7 +39,7 @@ class HardGoodsController < ApplicationController
     @hard_good = @recipe.hard_goods.find(params[:id])
 
     @hard_good.update(hard_good_params)
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   def destroy
@@ -48,7 +48,7 @@ class HardGoodsController < ApplicationController
     @hard_good = @recipe.hard_goods.find(params[:id])
 
     @hard_good.destroy!
-    redirect_to wedding_path(@wedding)
+    redirect_back(fallback_location: wedding_recipe_path(@wedding, @recipe))
   end
 
   private
