@@ -13,7 +13,7 @@
         Recipe Quantity: <%= @recipe.recipe_quantity %>
       </h4>
 
-      <h4 id="notes">
+      <h4 id="notes completed">
         Notes: <%= recipe.notes %>
       </h4>
 
@@ -52,7 +52,7 @@
         </div>
       <% end %>
 
-      <div class="collapse" id="collapseRecipeEdit<%= @wedding.id %>">
+      <div class="collapse" id="collapseRecipeEdit<%= @recipe.id %>">
         <div class="well">
           <%= render "recipes_edit" %>
         </div>
