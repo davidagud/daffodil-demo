@@ -63,7 +63,7 @@
       <% @recipes = @wedding.recipes %>
       <%= render "recipes/recipes" %>
       <div class="row">
-        <%= button_to "Back", wedding_path(:wedding_id), class: "btn btn-secondary", id: "update-button" %>
+        <%= button_to "Back", wedding_path(@wedding), class: "btn btn-secondary", id: "update-button" %>
       </div>
     </div>
 
