@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
     @recipe = @wedding.recipes.new(recipe_params)
 
     @recipe.save!
-    redirect_to wedding_path(@wedding)
   end
 
   def update
@@ -35,7 +34,6 @@ class RecipesController < ApplicationController
     @recipe = @wedding.recipes.find(params[:id])
 
     @recipe.update(recipe_params)
-    redirect_to wedding_path(@wedding)
   end
 
   def destroy
