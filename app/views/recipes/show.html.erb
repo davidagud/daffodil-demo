@@ -1,21 +1,74 @@
-<%= link_to 'View all recipes', wedding_recipes_path(@wedding) %>
+<div class="container" id="wedding-frame">
+  <div class="row">
+    <div class="col-sm-4">
+      <h4>
+        <a id="wedding-name" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= @recipe.id %>" aria-expanded="false" aria-controls="collapseExample">
+          <%= @recipe.recipe_name %>
+        </a>
+      </h4>
 
-<p>
-  <h1>Recipe Name:</h1>
-  <h2><%= @recipe.recipe_name %></h2>
-</p>
+      <h4 id="wedding-date">
+        Recipe Quantity: <%= @recipe.recipe_quantity %>
+      </h4>
 
-<p>
-  <h1>Recipe Ingredients:</h1>
-  <% @recipe.flowers.each do |ingredient| %>
-  <h2><%= ingredient.flower_name %> <%= ingredient.quantity %></h2>
-  <% end %>
-</p>
+      <h4 id="notes">
+        Notes: <%= recipe.notes %>
+      </h4>
 
-<p>
-  <h1>Recipe Quantity per <%= @wedding.wedding_name %>:</h1>
-  <h2><%= @recipe.recipe_quantity %></h2>
-</p>
+      <% if recipe.retail_price.nil? then %>
+        <h4 id="total-price">Retail: Not Set</h4>
+        <h4 id="total-price">Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %></h4>
+      <% else %>
+        <h4 id="total-price">Retail: $<%= number_with_precision(recipe.retail_price * recipe.recipe_quantity, precision: 2) %></h4>
+        <h4 id="total-price">Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f * recipe.recipe_quantity, precision: 2)%></h4>
+        <h4 id="total-price">Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f * recipe.recipe_quantity, precision: 2)%></h4>
+        <h4 id="markup">Markup:
+          <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
+            <%= number_with_precision((recipe.retail_price* recipe.recipe_quantity)/recipe.recipe_total_price, precision: 2) %>
+          <% end %>
+        </h4>
+      <% end %>
 
-<%= link_to 'Edit', edit_wedding_recipe_path(@wedding, @recipe) %>
-<%= link_to 'Delete' %>
+      <% recipearrayflowers = [] %>
+      <% @recipe.each do |recipe| %>
+        <% recipe.flowers.each do |flower| %>
+          <% recipearrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+        <% end %>
+      <% end %>
+
+      <% flowerssum = Hash.new(0) %>
+
+      <% recipearrayflowers.each_with_object(flowerssum) do |hash, sum| %>
+        <% hash.each { |key, value| sum[key] += value } %>
+      <% end %>
+
+      <% sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+      <% sortedflowerssum.each do |flowername, flowersumquantity| %>
+        <hr id="row-separator">
+        <div class="row">
+          <div id="flower-row" class="col-11"><%= flowername %>:</div>
+          <div id="flower-row-number" class="col-1"><%= flowersumquantity %></div></br>
+        </div>
+      <% end %>
+
+      <div class="collapse" id="collapseRecipeEdit<%= @wedding.id %>">
+        <div class="well">
+          <%= render "edit" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <% @recipes = @wedding.recipes %>
+      <%= render "recipes/recipes" %>
+      <div class="row">
+        <%= button_to "Update All", weddings_update_all_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "update-button" %>
+        <%= button_to "Copy", weddings_copy_wedding_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "copy-wedding-button" %>
+        <%= button_to "Email", weddings_send_wedding_email_path(:wedding_id => @wedding.id), class: "btn btn-secondary", id: "send-wedding-email-button" %>
+        <%= link_to "Export", wedding_path(format: "xlsx"), class: "btn btn-secondary", id: "send-wedding-email-button"  %>
+      </div>
+    </div>
+
+  </div>
+</div>
