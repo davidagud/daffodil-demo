@@ -27,6 +27,8 @@ class RecipesController < ApplicationController
     @recipe = @wedding.recipes.new(recipe_params)
 
     @recipe.save!
+
+    redirect_to :back
   end
 
   def update
