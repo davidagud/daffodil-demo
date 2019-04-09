@@ -36,6 +36,7 @@ class RecipesController < ApplicationController
     @recipe = @wedding.recipes.find(params[:id])
 
     @recipe.update(recipe_params)
+    redirect_back(fallback_location: wedding_path(@wedding))
   end
 
   def destroy
