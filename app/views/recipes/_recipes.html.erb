@@ -20,7 +20,7 @@
     <div class="card">
       <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
         <div class="col-sm-11 recipe-header">
-          <%= link_to wedding_recipe_path(@wedding, @recipe) do %>
+          <%= link_to wedding_recipe_path(@wedding, @recipe), class: "btn btn-link" do %>
             <h5 class="card-title btn btn-link"><%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)</h5>
           <% end %>
 
@@ -59,9 +59,9 @@
         <div class="card-body">
           <p>
             <% @flowers = recipe.flowers %>
-            <%= render "flowers/flowers" %>
+            <%= render "flowers/flowers_quick_edit" %>
             <% @hard_goods = recipe.hard_goods %>
-            <%= render "hard_goods/hard_goods" %>
+            <%= render "hard_goods/hard_goods_quick_edit" %>
             <% @notes = recipe.notes %>
             <%= render "notes/notes" %>
           </p>
