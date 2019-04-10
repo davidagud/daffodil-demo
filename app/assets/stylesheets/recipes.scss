@@ -10,13 +10,13 @@
   margin-left: 25%;
 }
 
-.btn-link:hover {
+.wedding-link:hover, .btn-link:hover {
   text-decoration: underline!important;
   color: #545250;
 }
 
 .card-title {
-  font-family: monospace;
+  font-family: monospace!important;
   font-weight: 500;
   margin-bottom: 0;
 }

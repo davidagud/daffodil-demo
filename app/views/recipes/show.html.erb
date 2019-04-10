@@ -3,7 +3,7 @@
 <div class="container" id="wedding-frame">
   <div class="row">
     <div class="col-sm-4">
-      <%= link_to wedding_path(@wedding) do %>
+      <%= link_to wedding_path(@wedding), class: "wedding-link" do %>
         <h4 id="wedding-name"><%= @wedding.wedding_name %>'s</h4>
       <% end %>
 
