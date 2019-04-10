@@ -9,6 +9,18 @@ class RecipesController < ApplicationController
   def show
     @wedding = Wedding.find(params[:wedding_id])
     @recipe = @wedding.recipes.find(params[:id])
+
+    @recipe.flowers.each do |flower|
+      @flower = flower
+      @flower.update(:flower_total_price => flower_total_price)
+    end
+
+    @recipe.hard_goods.each do |hard_good|
+      @hard_good = hard_good
+      @hard_good.update(:hard_good_total_price => hard_good_total_price)
+    end
+
+    @recipe.update(:recipe_total_price => recipe_total_price)
   end
 
   def new
