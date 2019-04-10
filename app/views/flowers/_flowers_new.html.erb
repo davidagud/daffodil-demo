@@ -1,7 +1,7 @@
 <%= form_with scope: :flower, url: wedding_recipe_flowers_path(@wedding, @recipe), local: true do |form| %>
   <p>
     <%= form.label :flower_name %>:
-    <%= form.select :flower_name, options_for_select(options_for_flowers, selected: nil) %>
+    <%= form.select :flower_name, options_for_select(options_for_flowers, include_blank: true ) %>
   </p>
 
   <p>
