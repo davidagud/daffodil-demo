@@ -1,0 +1,20 @@
+<div class="col-4 wedding-card">
+  <h4 class="wedding-name"><%= link_to wedding.wedding_name, wedding_path(wedding) %></h4>
+  <h6 class="wedding-date"><%= wedding.wedding_date.to_s(:long_ordinal) %></h6>
+
+  <div class="row button-row justify-content-center">
+    <%= form_for order_item, remote: true do |f| %>
+      <div class="input-group">
+        <div class="input-group-btn">
+          <%= f.hidden_field :wedding_id, value: wedding.id %>
+          <%= f.submit "Add to Cart", class: "btn btn-outline-secondary", id: "add-to-cart-button" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div>
+      <%= link_to 'Delete', wedding_path(wedding), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary", id: "delete-wedding-button" %>
+    </div>
+  </div>
+
+</div>

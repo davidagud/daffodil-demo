@@ -1,0 +1,25 @@
+<h1 class="title">ALL WEDDINGS</h1>
+
+<div class="text-center" id="create-wedding-button-container">
+  <a id="create-wedding-button" role="button" data-toggle="collapse" href="#collapseNew" aria-expanded="false" aria-controls="collapseExample">
+    Create New Wedding
+  </a>
+</div>
+
+<div class="collapse text-center" id="collapseNew">
+  <div class="well">
+    <%= render "new" %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row wedding-row">
+    <% @weddings.each do |wedding| %>
+      <%= render "wedding_card", wedding: wedding, order_item: @order_item %>
+    <% end %>
+  </div>
+
+  <div class="col-sm-8">
+    <%= button_to "Update All", weddings_update_all_weddings_path, class: "btn btn-secondary", id: "update-button" %>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<h1 id="title">Current Weddings in Cart </h1>
+
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some weddings to your cart.
+  </p>
+<% else %>
+  <div class="row justify-content-around">
+
+    <div class="col-sm-7 weddings-column">
+      <% @order_items.each do |order_item| %>
+        <div class="col-sm-12 cart-row">
+          <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
+        </div>
+      <% end %>
+      <%= link_to "Export as spreadsheet", cart_path(format: "xlsx"), class: "btn btn-secondary" %>
+    </div>
+
+    <div class="col-sm-4 cart-sidebar">
+      <h2 id="cart-total">Cart Total</h2>
+      <div>
+
+        <% cartarrayflowers = [] %>
+        <% current_order.recipes.each do |recipe| %>
+          <% recipe.flowers.each do |flower| %>
+            <% cartarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+          <% end %>
+        <% end %>
+
+        <% cartflowerssum = Hash.new(0) %>
+
+        <% cartarrayflowers.each_with_object(cartflowerssum) do |hash, sum| %>
+          <% hash.each { |key, value| sum[key] += value } %>
+        <% end %>
+
+        <% sortedcartflowerssum = cartflowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+        <% sortedcartflowerssum.each do |flowername, flowersumquantity| %>
+          <div class="row justify-content-between name-sums">
+            <div class="col-sm-9"><%= flowername %>:</div><div class="col-sm-1" id="sum"><%= flowersumquantity %></div></br>
+          </br>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+<% end %>

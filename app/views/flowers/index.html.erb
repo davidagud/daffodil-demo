@@ -1,0 +1,7 @@
+<h1>Viewing All Flowers for <%= @recipe.recipe_name %></h1>
+
+<% @flowers.each do |flower| %>
+  <h2>Flower Name: <%= flower.flower_name %></h2>
+  <h2>Flower ID: <%= flower.id %></h2>
+  <h2>Flower Quantity: <%= flower.quantity %></h2>
+<% end %>

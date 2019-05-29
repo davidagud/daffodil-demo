@@ -1,0 +1,78 @@
+<div class="row justify-content-between align-items-center">
+  <div class="row">
+    <div id="wedding-name"><%= link_to wedding.wedding_name, wedding_path(wedding), id: "wedding-name" %></div>
+    <a class="align-self-center circle-plus-<%= wedding.wedding_name.delete(" ") %> closed" data-toggle="collapse" href="#collapse<%= wedding.wedding_name.delete(" ") %>Flowers" role="button" aria-expand="false" aria-controls="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
+      <div class="circle">
+        <div class="horizontal fas fa-minus"></div>
+        <div class="vertical fas fa-minus"></div>
+      </div>
+    </a>
+  </div>
+
+  <div>
+    <%= form_for order_item, remote: true do |f| %>
+      <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete wedding '#{order_item.wedding.wedding_name}' from your cart?"}, method: :delete, remote: true, class: "btn btn-outline-secondary", id: "delete-wedding-button" } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="collapse" id="collapse<%= wedding.wedding_name.delete(" ") %>Flowers">
+  <div class="card card-body">
+    <strong>Flowers:</strong>
+
+    <% weddingarrayflowers = [] %>
+    <% wedding.recipes.each do |recipe| %>
+      <% recipe.flowers.each do |flower| %>
+        <% weddingarrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+      <% end %>
+    <% end %>
+
+    <% flowerssum = Hash.new(0) %>
+
+    <% weddingarrayflowers.each_with_object(flowerssum) do |hash, sum| %>
+      <% hash.each { |key, value| sum[key] += value } %>
+    <% end %>
+
+    <% sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+    <% sortedflowerssum.each do |flowername, flowersumquantity| %>
+      <hr>
+      <div class="row">
+        <div id="flower-row"><%= flowername %>:</div>
+        <div id="flower-row"><%= flowersumquantity %></div></br>
+      </div>
+    <% end %>
+
+    <strong>Hard Goods:</strong>
+
+    <% weddingarrayhardgoods = [] %>
+    <% wedding.recipes.each do |recipe| %>
+      <% recipe.hard_goods.each do |hard_good| %>
+        <% weddingarrayhardgoods.push({hard_good.hard_good_name => hard_good.hard_good_quantity * recipe.recipe_quantity}) %>
+      <% end %>
+    <% end %>
+
+    <% hardgoodssum = Hash.new(0) %>
+
+    <% weddingarrayhardgoods.each_with_object(hardgoodssum) do |hash, sum| %>
+      <% hash.each { |key, value| sum[key] += value } %>
+    <% end %>
+
+    <% sortedhardgoodssum = hardgoodssum.sort{|a,b| a[0] <=> b[0] } %>
+
+    <% sortedhardgoodssum.each do |hardgoodname, hardgoodsumquantity| %>
+      <hr>
+      <div class="row">
+        <div id="flower-row"><%= hardgoodname %>:</div>
+        <div id="flower-row"><%= hardgoodsumquantity %></div></br>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<script>
+  $('.circle-plus-<%= wedding.wedding_name.delete(" ") %>').on('click', function(){
+    $(this).toggleClass('opened');
+  })
+</script>

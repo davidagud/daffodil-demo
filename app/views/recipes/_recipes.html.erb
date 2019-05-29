@@ -1,0 +1,75 @@
+<div class="accordion" id="recipes">
+
+  <div class="card">
+    <div class="card-header" id="headingNewRecipe">
+      <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewRecipe" aria-expanded="false" aria-controls="collapseNewRecipe">
+        <h4 class="card-title">New Recipe</h4>
+      </a>
+    </div>
+
+    <div class="collapse" id="collapseNewRecipe" aria-labelledby="NewRecipe" data-parent="#recipes">
+      <div class="card-body">
+        <%= render "recipes/recipes_new" %>
+      </div>
+    </div>
+  </div>
+
+  <% @recipes.order('created_at ASC').each do |recipe| %>
+    <% @recipe = recipe %>
+
+    <div class="card">
+      <div class="card-header row justify-content-between" id="<%= recipe.recipe_name %>Header">
+        <div class="col-sm-11 recipe-header">
+          <%= link_to wedding_recipe_path(@wedding, @recipe) do %>
+            <h5 class="card-title btn btn-link"><%= recipe.recipe_name %> (<%= recipe.recipe_quantity %>)</h5>
+          <% end %>
+
+          <div>
+            <a class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseRecipe<%= recipe.id %>" aria-expanded="false" aria-controls="Recipe<%= recipe.recipe_name %>">
+              <h5 class="card-title">
+                <% if recipe.retail_price.nil? then %>
+                  Retail: Not Set, Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %>
+                <% else %>
+                  Retail: $<%= number_with_precision(recipe.retail_price, precision: 2) %>,
+                  Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f, precision: 2)%>,
+                  Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f, precision: 2)%>,
+                  Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
+                            <%= number_with_precision((recipe.retail_price* recipe.recipe_quantity)/recipe.recipe_total_price, precision: 2) %>
+                          <% end %>
+                <% end %>
+              </h5>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-sm-1 align-self-center">
+          <a class="btn btn-secondary btn-sm btn-icon" role="button" data-toggle="collapse" href="#collapseRecipeEdit<%= recipe.id %>" aria-expanded="false" aria-controls="EditRecipe<%= recipe.recipe_name %>">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseRecipeEdit<%= recipe.id %>" aria-labelledby="EditRecipe<%= recipe.recipe_name %>" data-parent="#recipes">
+        <div class="card-body">
+          <%= render "recipes/recipes_edit_small" %>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseRecipe<%= recipe.id %>" aria-labelledby="Recipe<%= recipe.recipe_name %>" data-parent="#recipes">
+        <div class="card-body">
+          <p>
+            <% @flowers = recipe.flowers %>
+            <%= render "flowers/flowers_quick_edit" %>
+            <% @hard_goods = recipe.hard_goods %>
+            <%= render "hard_goods/hard_goods_quick_edit" %>
+            <% @notes = recipe.notes %>
+            <%= render "notes/notes" %>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div><!--End Accordion-->

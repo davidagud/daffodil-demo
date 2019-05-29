@@ -1,0 +1,51 @@
+<div class="container">
+
+  <h1 class="title">All Flowers</h1>
+
+  <div class="flower-search">
+    <%= form_with(url: masterflowers_path, method: 'get', local: true) do |form| %>
+            <%= form.text_field :r, id: 'r', value: params[:r], placeholder: "search" %>
+      sort: <%= form.select :t, options_for_sort_masterflowers %>
+            <%= form.submit 'find', class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+
+  <div class="accordion" id="flowers">
+
+    <div class="card">
+      <div class="card-header" id="headingNewMasterflower">
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseNewMasterflower" aria-expanded="false" aria-controls="collapseNewMasterflower">
+          <h4 class="card-title">New Masterflower</h4>
+        </button>
+      </div>
+
+      <div class="collapse" id="collapseNewMasterflower" aria-labelledby="NewMasterflower" data-parent="#flowers">
+        <div class="card-body">
+          <%= render "masterflowers_new" %>
+        </div>
+      </div>
+    </div>
+
+    <% @masterflowers.order('masterflower_name ASC').each do |masterflower| %>
+      <% @masterflower = masterflower %>
+
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= masterflower.id %>" aria-expanded="true" aria-controls="collapseOne">
+              <h4 class="card-title">
+                <%= masterflower.masterflower_name %>
+                $<%= number_with_precision(masterflower.masterflower_price, precision: 2) %>
+                (<%= if masterflower.vendor? then masterflower.vendor else "Vendor" end %>)
+              </h4>
+            </button>
+          </div>
+
+          <div id="collapse<%= masterflower.id %>" class="collapse" aria-labelledby="headingOne" data-parent="#flowers">
+            <div class="card-body">
+              <%= render "masterflowers_edit" %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

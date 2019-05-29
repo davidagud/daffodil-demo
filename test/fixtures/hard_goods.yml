@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hard_good_name: MyString
+  hard_good_quantity: 1
+  hard_good_price: 1
+  hard_good_total_price: 1
+  recipes: one
+
+two:
+  hard_good_name: MyString
+  hard_good_quantity: 1
+  hard_good_price: 1
+  hard_good_total_price: 1
+  recipes: two

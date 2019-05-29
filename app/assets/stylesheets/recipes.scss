@@ -1,0 +1,58 @@
+// Place all the styles related to the Recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#ingredients {
+  width: 100%;
+}
+
+#recipe-save-btn {
+  margin-left: 25%;
+}
+
+#recipe-wedding-cumulative-heading {
+  color: #545250;
+}
+
+.btn-link:hover {
+  text-decoration: underline!important;
+  color: #545250;
+}
+
+.wedding-link:hover {
+  color: #6c757d;
+}
+
+.card-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.accordion {
+  width: 100%;
+}
+
+.btn-link {
+  font-family: sans-serif;
+  color: #545250;
+}
+
+.form-box {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.deleted {
+  color: red;
+}
+
+.recipe-header {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+h5 {
+  font-weight: 300;
+  font-size: 1rem;
+}

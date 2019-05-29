@@ -1,0 +1,29 @@
+<div class="accordion" id="hard-goods">
+
+  <% @hard_goods.each do |hard_good| %>
+    <% @hard_good = hard_good %>
+
+    <div class="card">
+      <div class="card-header row justify-content-between" id="<%= hard_good.hard_good_name %>Header">
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseHardGood<%= hard_good.id %>" aria-controls="HardGood<%= hard_good.hard_good_name %>">
+          <h5><%= hard_good.hard_good_name %> (<%= hard_good.hard_good_quantity %>)</h5>
+        </button>
+
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseHardGood<%= hard_good.id %>" aria-controls="HardGood<%= hard_good.hard_good_name %>">
+          <h5>Total: $<%= number_with_precision(hard_good.hard_good_total_price, precision: 2) %></h5>
+        </button>
+
+      </div>
+
+      <div class="collapse" id="collapseHardGood<%= hard_good.id %>" aria-labelledby="HardGood<%= hard_good.hard_good_name %>" data-parent="#hard-goods">
+        <div class="card-body">
+          <p>
+            <%= render "hard_goods/hard_goods_edit" %>
+          </p>
+        </div>
+      </div>
+    </div><!--Ingredient End Card-->
+
+  <% end %>
+
+</div><!--End accordion-->

@@ -1,0 +1,29 @@
+<div class="accordion" id="ingredients">
+
+  <% @flowers.order('flower_name ASC').each do |flower| %>
+    <% @flower = flower %>
+
+    <div class="card">
+      <div class="card-header row justify-content-between" id="<%= flower.flower_name %>Header">
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
+          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>"><%= flower.flower_name %> (<%= flower.quantity %>)</h5>
+        </button>
+
+        <button class="btn btn-link" role="button" data-toggle="collapse" data-target="#collapseIngredient<%= flower.id %>" aria-controls="Ingredient<%= flower.flower_name %>">
+          <h5 class="<% if flower.flower_price == 0 then %>deleted<% else %><% end %>">Total: $<%= number_with_precision(flower.flower_total_price, precision: 2 ) %></h5>
+        </button>
+
+      </div>
+
+      <div class="collapse" id="collapseIngredient<%= flower.id %>" aria-labelledby="Ingredient<%= flower.flower_name %>" data-parent="#ingredients">
+        <div class="card-body">
+          <p>
+            <%= render "flowers/flowers_edit" %>
+          </p>
+        </div>
+      </div>
+    </div><!--Ingredient End Card-->
+
+  <% end %>
+
+</div><!--End accordion-->

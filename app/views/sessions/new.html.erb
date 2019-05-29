@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Daffodil</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+
+    <div class="row justify-content-center">
+
+      <div class="col-sm-6">
+        <h1 class="title">Daffodil Orders</h1>
+
+        <%= form_for(:session, url: login_path) do |f| %>
+
+          <p>
+            <%= f.label :username %>
+            <%= f.text_field :username, class: 'form-control' %>
+          </p>
+
+          <p>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </p>
+
+          <%= f.submit "Log in", class: "btn btn-secondary" %>
+        <% end %>
+
+      </div>
+    </div>
+  </body>
+</html>
