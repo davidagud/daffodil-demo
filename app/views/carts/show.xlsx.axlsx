@@ -82,7 +82,11 @@ wb.add_worksheet(name: "Hard Goods") do |sheet|
   cartarrayhardgoods = []
   current_order.recipes.each do |recipe|
     recipe.hard_goods.each do |hard_good|
+<<<<<<< HEAD
       cartarrayhardgoods.push({hard_good.hard_good_name + '-' + hard_good.recipe.wedding.wedding_name => hard_good.hard_good_quantity * recipe.recipe_quantity})
+=======
+      cartarrayhardgoods.push({hard_good.hard_good_name => hard_good.hard_good_quantity * recipe.recipe_quantity})
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     end
   end
 

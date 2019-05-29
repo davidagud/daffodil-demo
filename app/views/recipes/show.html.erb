@@ -25,9 +25,15 @@
         <h4 id="total-price">Retail: Not Set</h4>
         <h4 id="total-price">Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %></h4>
       <% else %>
+<<<<<<< HEAD
         <h4 id="total-price">Retail: $<%= number_with_precision(recipe.retail_price, precision: 2) %></h4>
         <h4 id="total-price">Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f, precision: 2)%></h4>
         <h4 id="total-price">Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f, precision: 2)%></h4>
+=======
+        <h4 id="total-price">Retail: $<%= number_with_precision(recipe.retail_price * recipe.recipe_quantity, precision: 2) %></h4>
+        <h4 id="total-price">Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f * recipe.recipe_quantity, precision: 2)%></h4>
+        <h4 id="total-price">Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f * recipe.recipe_quantity, precision: 2)%></h4>
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
         <h4 id="markup">Markup:
           <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
             <%= number_with_precision((recipe.retail_price* recipe.recipe_quantity)/recipe.recipe_total_price, precision: 2) %>
@@ -35,6 +41,7 @@
         </h4>
       <% end %>
 
+<<<<<<< HEAD
       <!-- Recipe flower cumulative totals -->
 
         <br>
@@ -92,6 +99,28 @@
         <hr id="row-separator">
 
       <!-- End wedding flower cumulative totals -->
+=======
+      <% recipearrayflowers = [] %>
+      <% recipe.flowers.each do |flower| %>
+        <% recipearrayflowers.push({flower.flower_name => flower.quantity * recipe.recipe_quantity}) %>
+      <% end %>
+
+      <% flowerssum = Hash.new(0) %>
+
+      <% recipearrayflowers.each_with_object(flowerssum) do |hash, sum| %>
+        <% hash.each { |key, value| sum[key] += value } %>
+      <% end %>
+
+      <% sortedflowerssum = flowerssum.sort{|a,b| a[0] <=> b[0] } %>
+
+      <% sortedflowerssum.each do |flowername, flowersumquantity| %>
+        <hr id="row-separator">
+        <div class="row">
+          <div id="flower-row" class="col-11"><%= flowername %>:</div>
+          <div id="flower-row-number" class="col-1"><%= flowersumquantity %></div></br>
+        </div>
+      <% end %>
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
 
       <div class="collapse" id="collapseRecipeEdit<%= @recipe.id %>">
         <div class="well">

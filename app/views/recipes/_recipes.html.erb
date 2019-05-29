@@ -14,7 +14,11 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <% @recipes.order('created_at ASC').each do |recipe| %>
+=======
+  <% @recipes.order('recipe_name ASC').each do |recipe| %>
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     <% @recipe = recipe %>
 
     <div class="card">
@@ -30,9 +34,15 @@
                 <% if recipe.retail_price.nil? then %>
                   Retail: Not Set, Cost: $<%= number_with_precision(recipe.recipe_total_price, precision: 2) %>
                 <% else %>
+<<<<<<< HEAD
                   Retail: $<%= number_with_precision(recipe.retail_price, precision: 2) %>,
                   Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f, precision: 2)%>,
                   Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f, precision: 2)%>,
+=======
+                  Retail: $<%= number_with_precision(recipe.retail_price * recipe.recipe_quantity, precision: 2) %>,
+                  Gds. Cost: $<%= number_with_precision(recipe.hard_goods.sum(:hard_good_total_price).to_f * recipe.recipe_quantity, precision: 2)%>,
+                  Fl. Cost: $<%= number_with_precision(recipe.flowers.sum(:flower_total_price).to_f * recipe.recipe_quantity, precision: 2)%>,
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
                   Markup: <% if recipe.recipe_total_price == 0 then %> Cost is $0 <% else %>
                             <%= number_with_precision((recipe.retail_price* recipe.recipe_quantity)/recipe.recipe_total_price, precision: 2) %>
                           <% end %>

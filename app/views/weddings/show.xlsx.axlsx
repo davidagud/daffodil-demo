@@ -4,11 +4,19 @@ wedding = @wedding
 
 
 wb.add_worksheet(name: "Recipes") do |sheet|
+<<<<<<< HEAD
   sheet.add_row %w(NAME QTY IND-COST TOT-COST IND-RETAIL TOT-RETAIL NOTES)
 
   wedding.recipes.each do |recipe|
 
   sheet.add_row [recipe.recipe_name.upcase, recipe.recipe_quantity, recipe.recipe_total_price/recipe.recipe_quantity, recipe.recipe_total_price, recipe.retail_price, recipe.retail_price * recipe.recipe_quantity, recipe.notes]
+=======
+  sheet.add_row %w(NAME QTY IND-COST TOT-COST RETAIL NOTES)
+
+  wedding.recipes.each do |recipe|
+
+  sheet.add_row [recipe.recipe_name.upcase, recipe.recipe_quantity, recipe.recipe_total_price/recipe.recipe_quantity, recipe.recipe_total_price, recipe.retail_price * recipe.recipe_quantity, recipe.notes]
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
 
     recipe.flowers.order('flower_name ASC').each do |flower|
       sheet.add_row [flower.flower_name, flower.quantity, flower.flower_price, flower.flower_total_price]
@@ -22,6 +30,7 @@ end
 wb.add_worksheet(name: "Flowers") do |sheet|
   sheet.add_row %w(NAME QTY)
 
+<<<<<<< HEAD
   weddingarrayflowers = []
   wedding.recipes.each do |recipe|
     recipe.flowers.each do |flower|
@@ -39,10 +48,15 @@ wb.add_worksheet(name: "Flowers") do |sheet|
 
   sortedweddingflowerssum.each do |flowername, flowersumquantity|
     sheet.add_row [flowername, flowersumquantity]
+=======
+  wedding.flowers.group(:flower_name).sum(:quantity).each do |flower_name, sum|
+    sheet.add_row [flower_name, sum]
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
   end
 end
 
 wb.add_worksheet(name: "Hard Goods") do |sheet|
+<<<<<<< HEAD
   sheet.add_row %w(NAME QTY IND-PRICE TOT-PRICE TOT-PRICE*RECIPE-QTY)
 
   wedding.recipes.each do |recipe|
@@ -51,6 +65,16 @@ wb.add_worksheet(name: "Hard Goods") do |sheet|
 
     recipe.hard_goods.each do |hard_good|
       sheet.add_row [hard_good.hard_good_name, hard_good.hard_good_quantity, hard_good.hard_good_price, hard_good.hard_good_total_price, hard_good.hard_good_total_price * recipe.recipe_quantity]
+=======
+  sheet.add_row %w(NAME QTY IND-PRICE TOT-PRICE)
+
+  wedding.recipes.each do |recipe|
+
+  sheet.add_row [recipe.recipe_name.upcase]
+
+    recipe.hard_goods.each do |hard_good|
+      sheet.add_row [hard_good.hard_good_name, hard_good.hard_good_quantity, hard_good.hard_good_price, hard_good.hard_good_total_price]
+>>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     end
 
   sheet.add_row []
