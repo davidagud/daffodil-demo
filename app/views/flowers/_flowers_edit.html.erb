@@ -1,11 +1,7 @@
 <%= form_with scope: :flower, url: wedding_recipe_flower_path(@wedding, @recipe, @flower), local: true, method: :patch do |form| %>
   <p>
     <%= form.label :quantity %>:
-<<<<<<< HEAD
     <%= form.text_field :quantity, class: "text-field", required: true %>
-=======
-    <%= form.text_field :quantity, class: "text-field" %>
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
 
     <%= form.submit class: "btn btn-secondary btn-sm"%>
     <%= link_to wedding_recipe_flower_path(@wedding, @recipe, @flower), method: :delete, data: { confirm: 'Are you sure?' } do %>

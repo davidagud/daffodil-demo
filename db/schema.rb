@@ -10,28 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_05_29_140411) do
-=======
-ActiveRecord::Schema.define(version: 2019_02_24_231649) do
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "flowers", force: :cascade do |t|
     t.string "flower_name"
-<<<<<<< HEAD
     t.decimal "quantity", precision: 8, scale: 2
     t.bigint "recipe_id"
     t.decimal "flower_price", precision: 8, scale: 2
     t.decimal "flower_total_price", precision: 8, scale: 2
-=======
-    t.integer "quantity"
-    t.bigint "recipe_id"
-    t.integer "flower_price"
-    t.integer "flower_total_price"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     t.string "flower_vendor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,15 +29,9 @@ ActiveRecord::Schema.define(version: 2019_02_24_231649) do
 
   create_table "hard_goods", force: :cascade do |t|
     t.string "hard_good_name"
-<<<<<<< HEAD
     t.decimal "hard_good_quantity", precision: 8, scale: 2
     t.decimal "hard_good_price", precision: 8, scale: 2
     t.decimal "hard_good_total_price", precision: 8, scale: 2
-=======
-    t.integer "hard_good_quantity"
-    t.integer "hard_good_price"
-    t.integer "hard_good_total_price"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,11 +40,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_231649) do
 
   create_table "masterflowers", force: :cascade do |t|
     t.string "masterflower_name"
-<<<<<<< HEAD
     t.decimal "masterflower_price", precision: 8, scale: 2
-=======
-    t.integer "masterflower_price"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     t.string "vendor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,13 +64,8 @@ ActiveRecord::Schema.define(version: 2019_02_24_231649) do
     t.string "recipe_name"
     t.string "recipe_ingredient"
     t.integer "recipe_quantity"
-<<<<<<< HEAD
     t.decimal "recipe_total_price", precision: 8, scale: 2
     t.decimal "retail_price", precision: 8, scale: 2
-=======
-    t.integer "recipe_total_price"
-    t.integer "retail_price"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     t.text "notes"
     t.bigint "wedding_id"
     t.datetime "created_at", null: false
@@ -110,20 +84,11 @@ ActiveRecord::Schema.define(version: 2019_02_24_231649) do
     t.string "wedding_name"
     t.date "wedding_date"
     t.boolean "completed"
-<<<<<<< HEAD
     t.decimal "total_price", precision: 8, scale: 2
-=======
-    t.integer "total_price"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   add_foreign_key "order_items", "orders", on_delete: :cascade
   add_foreign_key "order_items", "weddings", on_delete: :cascade
-=======
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "weddings"
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
 end

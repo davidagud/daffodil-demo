@@ -17,7 +17,6 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
-<<<<<<< HEAD
 
 $(document).ready(function() {
     $('#filter-menu').focusout(function(){
@@ -25,5 +24,3 @@ $(document).ready(function() {
         console.log('It worked');
     });
 });
-=======
->>>>>>> db966d9814db23602d85a57d6c4a0e395835e246
