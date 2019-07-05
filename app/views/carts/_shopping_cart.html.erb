@@ -16,7 +16,7 @@
 <% else %>
   <div class="row justify-content-around">
 
-    <div class="col-sm-7 weddings-column">
+    <div class="col-sm-6 weddings-column">
       <% @order_items.each do |order_item| %>
         <div class="col-sm-12 cart-row">
           <%= render 'carts/cart_row', wedding: order_item.wedding, order_item: order_item %>
@@ -25,7 +25,7 @@
       <%= link_to "Export as spreadsheet", cart_path(format: "xlsx"), class: "btn btn-secondary" %>
     </div>
 
-    <div class="col-sm-4 cart-sidebar">
+    <div class="col-sm-5 cart-sidebar">
       <h2 id="cart-total">Cart Total</h2>
       <div>
 
