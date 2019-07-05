@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
     else
       Order.new
     end
+    rescue
+      Order.new
   end
 
   def current_user
