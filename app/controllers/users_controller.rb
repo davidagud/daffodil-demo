@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if @user.errors.any?
-      flash[:danger] = "The name '" + @user.username.capitalize + "' has been taken or password is empty."
+      flash[:danger] = "The name '" + @user.username.capitalize + "' has been taken or password does not meet requirements."
       redirect_to edit_user_path(@user)
     else
       redirect_to users_path
