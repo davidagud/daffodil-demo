@@ -1682,14 +1682,3 @@ HardGood.create!([
   {hard_good_name: "lantern", hard_good_quantity: "2.0", hard_good_price: "10.0", hard_good_total_price: "20.0", recipe_id: 185},
   {hard_good_name: "Bud Vase", hard_good_quantity: "7.0", hard_good_price: "1.0", hard_good_total_price: "7.0", recipe_id: 185},
 ])
-OrderItem.create!([
-  {order_id: 3, wedding_id: 6},
-  {order_id: 6, wedding_id: 6},
-  {order_id: 7, wedding_id: 8},
-  {order_id: 10, wedding_id: 12},
-  {order_id: 2, wedding_id: 27},
-  {order_id: 11, wedding_id: 16},
-  {order_id: 11, wedding_id: 12},
-  {order_id: 12, wedding_id: 34},
-  {order_id: 13, wedding_id: 34}
-])
