@@ -630,7 +630,7 @@ Recipe.create!([
   {recipe_name: "Vase", recipe_ingredient: nil, recipe_quantity: 3, recipe_total_price: "117.12", retail_price: "10.0", notes: "", wedding_id: 34}
 ])
 User.create!([
-  {username: "Demo_user", password_digest: "$2a$10$IdhRaanXh86HMiG0Q3A7Q.cDb.HMmVSneh.jh6ydz5vmbv8hOpNce"}
+  {username: "Demo_user", password: "Demo_password1"}
 ])
 Flower.create!([
   {flower_name: "Dahlia White Dinnerplate - Krueger", quantity: "3.0", recipe_id: 53, flower_price: "3.1", flower_total_price: "9.3", flower_vendor: "Krueger"},
