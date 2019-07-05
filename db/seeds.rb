@@ -419,7 +419,8 @@ Wedding.create!([
   {wedding_name: "Amy Ticknor", wedding_date: "2019-06-15", completed: false, total_price: "800.31"},
   {wedding_name: "Ellie Holzhausen", wedding_date: "2018-08-25", completed: false, total_price: "740.2"},
   {wedding_name: "Jenna Hall TEST", wedding_date: "2019-04-06", completed: false, total_price: "817.94"},
-  {wedding_name: "Newest Test", wedding_date: "2019-05-28", completed: false, total_price: "117.12"}
+  {wedding_name: "Newest Test", wedding_date: "2019-05-28", completed: false, total_price: "117.12"},
+  {wedding_name: "Newest Test2", wedding_date: "2019-05-28", completed: false, total_price: "117.12"}
 ])
 Recipe.create!([
   {recipe_name: "Catch All", recipe_ingredient: nil, recipe_quantity: 1, recipe_total_price: "20.5", retail_price: "72.0", notes: "Cocktail, Memorial & Toss\r\n-need total of 14 roses (any variety)", wedding_id: 6},
