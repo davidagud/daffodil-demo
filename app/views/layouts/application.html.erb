@@ -35,25 +35,27 @@
         <li class="nav-item cart-text">
           <%= render 'layouts/cart_text' %>
         </li>
-        <li class="nav-item form-inline ml-auto">
-        <%= form_with(url: weddings_path, method: 'get', local: true, id: 'filter-form') do |form| %>
-          <%= form.text_field :n, id: 'n', value: params[:n], placeholder: "name", class: 'form-control' %>
-          <%= form.text_field :d, id: 'd', value: params[:d], placeholder: "date", class: 'form-control' %>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            filter
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" id="filter-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item"> Completed: <%= form.select :c, options_for_completed %></a>
-            <a class="dropdown-item"> Sort: <%= form.select :s, options_for_sort %></a>
-          </div>
-        </li>
-        <li class="nav-item form-inline">
-          <%= button_tag( :class => "btn btn-secondary") do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-        </li>
+        <%= form_with(url: weddings_path, method: 'get', local: true, id: 'filter-form', class: 'ml-auto') do |form| %>
+        <div class="row">
+          <li class="nav-item form-inline">
+            <%= form.text_field :n, id: 'n', value: params[:n], placeholder: "name", class: 'form-control' %>
+            <%= form.text_field :d, id: 'd', value: params[:d], placeholder: "date", class: 'form-control' %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              filter
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" id="filter-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item"> Completed: <%= form.select :c, options_for_completed %></a>
+              <a class="dropdown-item"> Sort: <%= form.select :s, options_for_sort %></a>
+            </div>
+          </li>
+          <li class="nav-item form-inline">
+            <%= button_tag( :class => "btn btn-secondary") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </li>
+        </div>
         <% end %>
       </ul>
     </div>
