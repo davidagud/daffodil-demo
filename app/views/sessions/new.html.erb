@@ -19,17 +19,23 @@
 
       <div class="col-sm-6">
         <h1 class="title">Flower Database</h1>
+        <h3>
+          All numbers and names are fictional for the privacy of the florist this app was made for.<br>
+          The database resets itself after 1 hour to pre-set data for the sake of the demo.
+        </h3>
 
         <%= form_for(:session, url: login_path) do |f| %>
 
           <p>
             <%= f.label :username %>
             <%= f.text_field :username, class: 'form-control' %>
+            <h3>For demo, use 'Demo_user'</h3>
           </p>
 
           <p>
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control' %>
+            <h3>For demo, use 'Demo_password1'</h3>
           </p>
 
           <%= f.submit "Log in", class: "btn btn-secondary" %>
