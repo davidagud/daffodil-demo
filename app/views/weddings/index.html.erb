@@ -1,3 +1,4 @@
+<p style="text-align: center">From this page, you can create new weddings, go to existing weddings to edit their recipes, delete weddings, and add weddings to the cart.</p>
 <h1 class="title">ALL WEDDINGS</h1>
 
 <div class="text-center" id="create-wedding-button-container">
@@ -20,6 +21,6 @@
   </div>
 
   <div class="col-sm-8">
-    <%= button_to "Update All", weddings_update_all_weddings_path, class: "btn btn-secondary", id: "update-button" %>
+    <%= button_to "Update All", weddings_update_all_weddings_path, class: "btn btn-secondary", id: "update-button" %><p>This button cycles through the flower database and updates the flower prices of all the weddings. Any flowers that don't have a match (because they were deleted from the database), turn red and their price is set to zero.</p>
   </div>
 </div>

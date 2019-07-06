@@ -13,6 +13,12 @@
         </a>
       </h4>
 
+      <div class="collapse" id="collapseRecipeEdit<%= @recipe.id %>">
+        <div class="well">
+          <%= render "recipes_edit_small" %>
+        </div>
+      </div>
+
       <h4 id="wedding-date">
         Recipe Quantity: <%= recipe.recipe_quantity %>
       </h4>
@@ -92,12 +98,6 @@
         <hr id="row-separator">
 
       <!-- End wedding flower cumulative totals -->
-
-      <div class="collapse" id="collapseRecipeEdit<%= @recipe.id %>">
-        <div class="well">
-          <%= render "recipes_edit_small" %>
-        </div>
-      </div>
     </div>
 
     <div class="col-sm-8">

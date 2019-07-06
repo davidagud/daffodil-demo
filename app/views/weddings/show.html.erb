@@ -1,3 +1,13 @@
+<p class="container" style="margin-bottom: 20px">
+  On this page, the user can create, edit, and delete recipes. Recipes are individual items that make up the wedding order.
+  By clicking the wedding name, the user can edit wedding details at the bottom of the page.
+  By clicking the recipe name, the user is directed to a page exclusively for that recipe where they can edit the recipe "ingredients" (i.e. flowers and hard goods).
+  By clicking the edit button beside the recipe, the user can edit recipe details (like name, price, and quantity).
+  By clicking the numbers below the recipe name, the user can see all of the "ingredients" that go into the recipe and make some edits.
+  <br><br>
+  "Update All" acts like "Update All" on the wedding page; "Copy" creates a copy of the wedding;
+  "Email" sends a copy of the spreadsheet created by "Export" to a pre-set email.
+
 <div class="container" id="wedding-frame">
   <div class="row">
     <div class="col-sm-4">
@@ -6,6 +16,12 @@
           <%= @wedding.wedding_name %>
         </a>
       </h4>
+
+      <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
+        <div class="well">
+          <%= render "edit" %>
+        </div>
+      </div>
 
       <h4 id="wedding-date">
         <%= @wedding.wedding_date.to_s(:long_ordinal) %>
@@ -85,12 +101,6 @@
       <hr id="row-separator">
 
       <!-- End wedding cumulative totals -->
-
-      <div class="collapse" id="collapseWeddingEdit<%= @wedding.id %>">
-        <div class="well">
-          <%= render "edit" %>
-        </div>
-      </div>
     </div>
 
     <div class="col-sm-8">

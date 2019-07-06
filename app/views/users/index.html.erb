@@ -1,3 +1,5 @@
+<p style="text-align: center">On this page, users can add, delete, and edit other users. The client didn't feel the need for any users to be admin users, so currently all users have admin permissions.</p>
+
 <% @users.each do |user| %>
   <div class="row justify-content-center">
     <%= link_to user.username, edit_user_path(user), class: "user_name" %>
