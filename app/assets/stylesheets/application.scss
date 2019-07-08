@@ -77,8 +77,17 @@ body {
   text-align: center;
 }
 
+.nav-item {
+  white-space: nowrap;
+}
+
+#filter-form .row, .search-bars {
+  flex-wrap: nowrap!important;
+}
+
 #n, #d {
   font-family: monospace;
+  width: 100%!important;
 }
 
 // Accordion fix

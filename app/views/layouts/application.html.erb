@@ -37,7 +37,7 @@
         </li>
         <%= form_with(url: weddings_path, method: 'get', local: true, id: 'filter-form', class: 'ml-auto') do |form| %>
         <div class="row">
-          <li class="nav-item form-inline">
+          <li class="nav-item form-inline search-bars">
             <%= form.text_field :n, id: 'n', value: params[:n], placeholder: "name", class: 'form-control' %>
             <%= form.text_field :d, id: 'd', value: params[:d], placeholder: "date", class: 'form-control' %>
           </li>
